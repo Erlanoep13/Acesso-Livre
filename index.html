@@ -4,50 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AcessoLivre</title>
-  <link rel="icon" href="IMGs/AcessoLivre.png">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-green-900 text-white">
 
-<!-- Navbar -->
-<nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
-  <a href="index.html" class="font-bold text-lg">AcessoLivre</a>
-  <div class="space-x-4 text-sm">
-    <a href="index.html" class="hover:underline">Início</a>
-    <a href="src/adicionar-local.html" class="hover:underline">Adicionar</a>
-    <a href="sobre.html" class="hover:underline">Sobre</a>
-  </div>
-</nav>
+  <!-- Navbar -->
+  <nav class="bg-green-800 p-4 flex justify-between items-center">
+    <button>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    <h1 class="text-xl font-bold">AcessoLivre</h1>
+    <img src="img/logo acessolivre.jpeg" alt="Logo" class="w-8 h-8 rounded-full">
+  </nav>
 
+  <div class="p-4 max-w-sm mx-auto">
 
-  <div class="max-w-sm mx-auto p-4">
-
-    <h1 class="text-2xl font-bold mb-1">Locais Acessíveis</h1>
-    <p class="text-gray-600 mb-4">Encontre locais com recursos de acessibilidade</p>
-
-    <!-- local do mapa Simulado -->
-    <div class="relative w-full h-64 bg-gray-200 rounded-md flex items-center justify-center">
-      <p class="text-gray-400">[Mapa aqui]</p>
-      <button class="absolute bottom-2 right-2 bg-blue-600 text-white text-xs px-3 py-1 rounded shadow">
-        📍 Minha localização
-      </button>
+    <!-- Campo de pesquisa -->
+    <div class="mb-4">
+      <input type="text" placeholder="pesquisar local"
+        class="w-full p-2 rounded-full text-black" />
     </div>
 
-    <!-- Local onde será listado -->
-    <div class="mt-4 p-3 bg-blue-50 rounded-md">
-      <h2 class="font-semibold text-lg">📌 Praça da Matriz</h2>
-      <ul class="text-sm text-gray-700 mt-1 list-disc pl-5">
-        <li>Rampa de acesso</li>
-        <li>Banheiro adaptado</li>
-      </ul>
+    <!-- Mapa (simulado) -->
+    <div class="bg-gray-200 h-64 rounded-md flex items-center justify-center">
+      <p class="text-gray-500">[Mapa Aqui]</p>
     </div>
 
-    <!-- Botão pra adicionar local -->
-    <a href="src/adicionar.html" class="mt-6 block w-full text-center bg-green-600 text-white py-2 rounded shadow hover:bg-green-700">
-      ➕ Adicionar novo local
-    </a>
+    <!-- Legenda -->
+    <div class="mt-4 space-y-2">
+      <div class="flex items-center gap-2">
+        <span class="w-4 h-4 bg-red-600 rounded-full inline-block"></span>
+        <p>Deficiência Motora</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-4 h-4 bg-green-400 rounded-full inline-block"></span>
+        <p>Deficiência Visual</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-4 h-4 bg-blue-600 rounded-full inline-block"></span>
+        <p>Deficiência Motora e Visual</p>
+      </div>
+    </div>
+
+    <!-- Lista de locais -->
+    <div class="mt-4 space-y-3">
+      <div class="bg-white text-black p-3 rounded-md shadow">
+        <h2 class="font-semibold">List item</h2>
+        <p class="text-sm">Supporting line text lorem ipsum dolor sit amet, consectetur.</p>
+      </div>
+      <div class="bg-white text-black p-3 rounded-md shadow">
+        <h2 class="font-semibold">List item</h2>
+        <p class="text-sm">Supporting line text lorem ipsum dolor sit amet, consectetur.</p>
+      </div>
+    </div>
 
   </div>
 
-<script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
