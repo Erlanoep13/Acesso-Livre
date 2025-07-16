@@ -1,0 +1,8 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* centralização de formulário em telas maiores */
+main form {
+  max-width: 300px;
+}

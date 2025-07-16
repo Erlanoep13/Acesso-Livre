@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AcessoLivre - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="CSS/Style.css" />
+</head>
+<body class="bg-green-900 text-white">
+
+  <!-- Navbar -->
+  <nav class="bg-green-800 p-4 flex justify-between items-center">
+    <button id="menuButton">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    <h1 class="text-xl font-bold"><a href="index.html">AcessoLivre</a></h1>
+    <img src="IMGs/AcessoLivre.png" alt="Logo" class="w-8 h-8 rounded-full">
+  </nav>
+
+  <!-- Menu lateral -->
+  <div id="sideMenu" class="fixed top-0 left-0 h-full w-64 bg-gray-100 text-black transform -translate-x-full transition-transform duration-200 ease-in-out shadow-lg z-50">
+    <div class="p-4 border-b flex items-center justify-between">
+      <h2 class="font-bold text-lg">AcessoLivre</h2>
+      <button id="closeMenu" class="text-gray-600">&times;</button>
+    </div>
+    <ul class="p-4 space-y-3">
+      <li><a href="pesquisar.html" class="flex items-center gap-2 hover:text-green-700">
+        <svg class="w-5 h-5" ...></svg>
+        Pesquisar
+      </a></li>
+      <li><a href="favoritar.html" class="flex items-center gap-2 hover:text-green-700">
+        <svg class="w-5 h-5" ...></svg>
+        Favoritar
+      </a></li>
+      <li><a href="login.html" class="flex items-center gap-2 hover:text-green-700">
+        <svg class="w-5 h-5" ...></svg>
+        Login
+      </a></li>
+      <hr>
+      <li><a href="criarConta.html" class="flex items-center gap-2 hover:text-green-700">
+        <svg class="w-5 h-5" ...></svg>
+        Criar conta
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <main class="p-6 flex flex-col items-center justify-center">
+    <h2 class="text-lg font-bold mb-4 text-center">
+      Faça Login e aproveite melhor nosso sistema!
+    </h2>
+
+    <form class="bg-white text-black rounded-md p-6 w-full max-w-xs space-y-4">
+      <div>
+        <label for="nome" class="block mb-1">Nome</label>
+        <input type="text" id="nome" placeholder="Value"
+          class="w-full p-2 rounded border border-gray-300" />
+      </div>
+
+      <div>
+        <label for="password" class="block mb-1">Senha</label>
+        <input type="password" id="password" placeholder="Value"
+          class="w-full p-2 rounded border border-gray-300" />
+      </div>
+
+      <button type="submit"
+        class="w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700">
+        Sign In
+      </button>
+    </form>
+
+    <a href="criarConta.html" class="mt-4 underline">Criar conta</a>
+  </main>
+
+  
+
+  <script src="JS/script.js"></script>
+</body>
+</html>
