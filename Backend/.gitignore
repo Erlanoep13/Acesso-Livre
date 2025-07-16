@@ -1,0 +1,9 @@
+# Ignorar dependências
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema do macOS e outros
+.DS_Store
