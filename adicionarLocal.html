@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AcessoLivre</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-900 flex items-center justify-center min-h-screen">
+
+  <div class="w-[90%] max-w-md bg-white rounded-2xl p-4 shadow-lg">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-4">
+      <button>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <span class="font-semibold text-lg">AcessoLivre</span>
+      <img src="IMGs/AcessoLivre.png" alt="Logo"
+           class="w-8 h-8" />
+    </div>
+
+    <!-- Formulário -->
+    <form class="space-y-4">
+      <!-- Nome do Local -->
+      <div>
+        <label class="block text-sm font-medium">Nome do Local:</label>
+        <input type="text" placeholder="Ex: Escola..." 
+               class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400" required/>
+      </div>
+
+      <!-- Tipo de Acessibilidade -->
+      <div>
+        <label class="block text-sm font-medium">Tipo de Acessibilidade:</label>
+        <select class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"required>
+          <option>Motora</option>
+          <option>Visual</option>
+          <option>Ambas</option>
+        </select>
+      </div>
+
+      <!-- Categoria do Local -->
+      <div>
+        <label class="block text-sm font-medium">Categoria do Local:</label>
+        <input type="text" placeholder="Ex: Educação, Saúde..."
+               class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400" required/>
+      </div>
+
+      <!-- Recursos de Acessibilidade Presentes -->
+      <div>
+        <label class="block text-sm font-medium">Recursos de Acessibilidade Presentes:</label>
+        <input type="text" placeholder="Ex: Rampas, Braille..."
+               class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400" required/>
+      </div>
+
+      <!-- Adicionar Foto -->
+      <div>
+        <label class="block text-sm font-medium">Adicionar Foto (Opcional)</label>
+        <div class="flex items-center space-x-2 mt-1">
+          <input type="file" accept="image/*" class="file:hidden w-full" id="upload">
+          <label for="upload" class="cursor-pointer flex items-center px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 text-sm">
+            📷 Anexar Foto
+          </label>
+        </div>
+      </div>
+
+      <!-- Descrição -->
+      <div>
+        <label class="block text-sm font-medium">Descrição:</label>
+        <textarea rows="4" placeholder="..."
+                  class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"></textarea>
+      </div>
+
+      <!-- Botão -->
+      <button type="button"
+              class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition">
+        Salvar Local
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>
