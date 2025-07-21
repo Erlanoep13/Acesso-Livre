@@ -42,3 +42,8 @@ if (btnSalvar) {
       sideMenu.classList.add("-translate-x-full");
     });
   }
+
+//criar conta
+
+//login
+

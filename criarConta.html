@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar Conta - AcessoLivre</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="CSS/Style.css" />
+</head>
+<body class="bg-green-900 text-white">
+
+  <!-- Navbar -->
+  <nav class="bg-green-800 p-4 flex justify-between items-center">
+    <button id="menuButton">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <h1 class="text-xl font-bold">
+      <a href="index.html" class="text-white">AcessoLivre</a>
+    </h1>
+
+    <img src="IMGs/AcessoLivre.png" alt="Logo" class="w-8 h-8 rounded-full">
+  </nav>
+
+  <!-- Conteúdo -->
+  <div class="p-4 max-w-sm mx-auto">
+    <h2 class="text-xl font-bold mb-4">Crie sua conta agora mesmo!</h2>
+
+    <form class="bg-white text-black p-4 rounded-md space-y-4">
+      <div>
+        <label for="nome" class="block text-sm font-medium">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome"
+          class="w-full p-2 border rounded-md">
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium">Email</label>
+        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com"
+          class="w-full p-2 border rounded-md">
+      </div>
+
+      <div>
+        <label for="senha" class="block text-sm font-medium">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Crie uma senha"
+          class="w-full p-2 border rounded-md">
+      </div>
+
+      <button type="submit" class="w-full bg-green-800 text-white p-2 rounded-md hover:bg-green-700">Criar Conta</button>
+    </form>
+
+    <p class="mt-4 text-center">
+      Já possui uma conta? 
+      <a href="login.html" class="underline">Faça login</a>
+    </p>
+  </div>
+
+</body>
+</html>
