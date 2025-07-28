@@ -6,3 +6,7 @@ body {
 main form {
   max-width: 300px;
 }
+
+.chaveAcesso{
+  display: none;
+}
