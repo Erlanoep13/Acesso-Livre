@@ -5,8 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AcessoLivre</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!--Tailwind CSS-->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!--Anexos do próprio sistema-->
   <link rel="stylesheet" href="CSS/Style.css" />
   <link rel="icon" href="../IMGs/AcessoLivre.png">
 
@@ -76,10 +84,8 @@
       <input type="text" placeholder="pesquisar local" class="w-full p-2 rounded-full text-black" />
     </div>
 
-    <!-- Mapa (simulado) -->
-    <div class="bg-gray-200 h-64 rounded-md flex items-center justify-center">
-      <p class="text-gray-500">[Mapa Aqui]</p>
-    </div>
+    <!-- Mapa -->
+    <div id="map" class="w-full h-64 rounded-md"></div>
 
     <!-- Legenda -->
     <div class="mt-4 space-y-2">
@@ -131,7 +137,6 @@
       © 2025 AcessoLivre. Todos os direitos reservados.
     </div>
   </footer>
-
 
   <script src="JS/script.js"></script>
 </body>

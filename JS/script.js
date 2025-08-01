@@ -43,7 +43,21 @@ if (btnSalvar) {
     });
   }
 
-//criar conta
 
-//login
+// Mapa Leaflet
+document.addEventListener("DOMContentLoaded", function () {
+  const mapContainer = document.getElementById("map");
+  if (!mapContainer) return; // evita erro
 
+  const map = L.map("map").setView([-5.12798, -39.733], 13);
+
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  }).addTo(map);
+
+  // Exemplo de marcador
+  const marker = L.marker([-5.12628, -39.730,8])
+    .addTo(map)
+    .bindPopup("<b>Praça Monsenhor José Cândidol</b><br>Vaga para deficientes e rampa para cadeirantes em frente à Tropikaly.")
+    .openPopup();
+});
