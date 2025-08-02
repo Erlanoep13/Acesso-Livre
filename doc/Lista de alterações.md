@@ -7,6 +7,8 @@
 ### Gerais
 
 - [ ] Tornar o sistema responsivo para telas grandes (media query ou Tailwind)
+- [ok] Trocar todos os títulos do cabeçalho por: AcessoLivre
+- [ok] Alterar ícone da barra de navegação pela nova imagem
 
 ### index.html
 
@@ -22,8 +24,6 @@
 - [ ] Corrigir o nome Favoritar para Favoritos no menu lateral
 - [ ] Adicionar footer em todas as páginas
 - [ ] Adicionar ícone no cabeçalho das páginas
-- [ ] Trocar todos os títulos do cabeçalho por: AcessoLivre
-- [ ] Alterar ícone da barra de navegação pela nova imagem
 
 ### index.html
 
