@@ -5,3 +5,7 @@ body {
 .chaveAcesso{
   display: none;
 }
+
+.leaflet-container {
+  z-index: 0 !important;
+}
