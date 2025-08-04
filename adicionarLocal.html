@@ -25,7 +25,7 @@
     </button>
     <h1 class="text-xl font-bold"><a href="index.html">AcessoLivre</a></h1>
 
-    
+
     <a href="index.html"><img src="IMGs/AcessoLivre.png" alt="Logo" class="w-8 h-8 rounded-full"></a>
 
   </nav>
@@ -80,7 +80,7 @@
         <!-- Coordenadas -->
         <div>
           <label class="block text-sm font-medium">Coordenadas:</label>
-          <input type="text"
+          <input type="text" id="coordenadas"
             class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
             required />
         </div>
@@ -111,14 +111,6 @@
             <option>Visual</option>
             <option>Ambas</option>
           </select>
-        </div>
-
-        <!--Localização -->
-        <div>
-          <label class="block text-sm font-medium">Localização📍:</label>
-          <input type="text" placeholder="Ex: Rua tereza lourenço, bairro sede..."
-            class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
-            required />
         </div>
 
         <!-- Categoria do Local -->
@@ -153,7 +145,8 @@
         <div>
           <label class="block text-sm font-medium">Descrição:</label>
           <textarea rows="4" placeholder="..."
-            class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400" required></textarea>
+            class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
+            required></textarea>
         </div>
 
         <!-- Botão -->
@@ -184,6 +177,20 @@
       © 2025 AcessoLivre. Todos os direitos reservados.
     </div>
   </footer>
+
+  <!-- Recebendo valores das coordenadas -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const lat = urlParams.get("lat");
+      const lng = urlParams.get("lng");
+
+      if (lat && lng) {
+        const campoCoord = document.getElementById("coordenadas");
+        campoCoord.value = `${lat}, ${lng}`;
+      }
+    });
+  </script>
 
   <script src="JS/script.js"></script>
 </body>
