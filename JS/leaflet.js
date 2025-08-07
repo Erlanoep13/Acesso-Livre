@@ -1,7 +1,7 @@
 // LEAFLET
 
 document.addEventListener("DOMContentLoaded", function () {
-    const mapContainer = document.getElementById("map");
+    const mapContainer = document.getElementById("mapContainer"); 
     if (!mapContainer) return; // evita erro
 
     // Ícones personalizados
@@ -81,9 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>${local.localizacao}</p>
             <p class="mt-1">${local.descricao}</p>
             ${local.foto
-                    ? `<img src="${local.foto}" alt="Foto do local" class="mt-2 rounded w-full max-w-[200px]"/>`
-                    : ""
-                }
+                ? `<img src="${local.foto}" alt="Foto do local" class="mt-2 rounded w-full max-w-[200px]"/>`
+                : ""
+            }
         </div>
         `;
 
@@ -110,6 +110,14 @@ document.addEventListener("DOMContentLoaded", function () {
             .openOn(map);
     });
 
+    const toggleMapSizeBtn = document.getElementById("toggleMapSize");
+
+    if (toggleMapSizeBtn && mapContainer) {
+        toggleMapSizeBtn.addEventListener("click", () => {
+            mapContainer.classList.toggle("fullscreen");
+            map.invalidateSize(); // Leaflet precisa disso para ajustar o tamanho
+        });
+    }
 });
 
 function redirecionarParaFormulario(lat, lng) {
