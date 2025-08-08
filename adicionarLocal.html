@@ -185,19 +185,37 @@
   <!-- Scripts -->
   <script src="JS/script.js"></script>
 
-  <!-- Recebendo valores das coordenadas -->
+  <!-- Recebendo valores dos locais -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const urlParams = new URLSearchParams(window.location.search);
-      const lat = urlParams.get("lat");
-      const lng = urlParams.get("lng");
 
-      if (lat && lng) {
-        const campoCoord = document.getElementById("coordenadas");
-        campoCoord.value = `${lat}, ${lng}`;
+      // Se existir "nome", assumimos que é edição
+      if (urlParams.get("nome")) {
+        document.querySelector('input[placeholder="Ex: Escola..."]').value = urlParams.get("nome") || "";
+        document.querySelector('input[placeholder="Ex: Centro, Rua 26 de Junho, 128"]').value = urlParams.get("localizacao") || "";
+        document.querySelector("select").value = urlParams.get("tipoAcessibilidade") || "Motora";
+        document.querySelector('input[placeholder="Ex: Educação, Saúde..."]').value = urlParams.get("categoria") || "";
+        document.querySelector('input[placeholder="Ex: Rampas, Braille..."]').value = urlParams.get("recursos") || "";
+        document.querySelector("textarea").value = urlParams.get("descricao") || "";
+        document.getElementById("coordenadas").value = urlParams.get("coordenadas") || "";
+
+        // Foto opcional (aqui só mostramos o nome do arquivo se existir)
+        if (urlParams.get("foto")) {
+          const labelFoto = document.querySelector('label[for="upload"]');
+          labelFoto.textContent = `📷 Foto atual: ${urlParams.get("foto").split('/').pop()}`;
+        }
+      } else {
+        // Modo "adicionar" normal (mantém coordenadas se vierem)
+        const lat = urlParams.get("lat");
+        const lng = urlParams.get("lng");
+        if (lat && lng) {
+          document.getElementById("coordenadas").value = `${lat}, ${lng}`;
+        }
       }
     });
   </script>
+
 
 </body>
 

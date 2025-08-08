@@ -16,11 +16,15 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #mapContainer.fullscreen #map {
   height: 100%;
   width: 100%;
   border-radius: 0;
+}
+
+#mapContainer.fullscreen .toggleMapSize{
+  z-index: 1000;
 }

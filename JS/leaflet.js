@@ -123,3 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function redirecionarParaFormulario(lat, lng) {
     window.location.href = `adicionarLocal.html?lat=${lat}&lng=${lng}`;
 }
+
+function editarLocal(dados) {
+  // Montar URL com todos os dados
+  const params = new URLSearchParams(dados).toString();
+  window.location.href = `adicionarLocal.html?${params}`;
+}

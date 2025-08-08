@@ -136,19 +136,24 @@
     <!-- Lista de locais -->
     <section class="mt-4 space-y-3">
 
+      <!-- Exemplo Praça da Matriz -->
       <div class="bg-white text-black p-3 rounded-md shadow">
         <h2 class="font-semibold">Praça da Matriz</h2>
-        <p class="text-sm">Praça Monsenhor José Cândido - Centro Vaga de motorista reservada para pessoas com
-          deficiência e rampa de acesso à praça em frente à Tropikaly.</p>
-        <input type="image" src="IMGs/lapis.jpg" alt="Botão de edição de local" width="15" height="15">
-        <input type="image" src="IMGs/coracao.jpg" alt="Botão de favoritar local" width="16" height="16">
-      </div>
-
-      <div class="bg-white text-black p-3 rounded-md shadow">
-        <h2 class="font-semibold">Hospital Municipal</h2>
-        <p class="text-sm">Rua 21 de novembro, 12 - Centro Acessível para todas as deficiências..</p>
-        <input type="image" src="IMGs/lapis.jpg" alt="Botão de edição de local" width="15" height="15">
-        <input type="image" src="IMGs/coracao.jpg" alt="Botão de favoritar local" width="16" height="16">
+        <p class="text-sm">
+          Praça Monsenhor José Cândido - Centro. Vaga de motorista reservada para pessoas com deficiência e rampa de
+          acesso à praça.
+        </p>
+        <input type="image" src="IMGs/lapis.jpg" alt="Editar" width="15" height="15" onclick="editarLocal({
+          coordenadas: '-5.12628, -39.730',
+          nome: 'Praça da Matriz',
+          localizacao: 'Praça Monsenhor José Cândido - Centro',
+          tipoAcessibilidade: 'Motora',
+          categoria: 'Lazer',
+          recursos: 'Rampa, Vaga PCD',
+          descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça.',
+          foto: 'IMGs/IgrejaMatriz.jpg'
+        })">
+        <input type="image" src="IMGs/coracao.jpg" alt="Favoritar" width="16" height="16">
       </div>
 
     </section>
