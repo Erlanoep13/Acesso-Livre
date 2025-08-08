@@ -1,7 +1,7 @@
 // LEAFLET
 
 document.addEventListener("DOMContentLoaded", function () {
-    const mapContainer = document.getElementById("mapContainer"); 
+    const mapContainer = document.getElementById("mapContainer");
     if (!mapContainer) return; // evita erro
 
     // Ícones personalizados
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             descricao: "Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça em frente à Tropikaly.",
             tipo: "motora", // vermelho
             localizacao: "Praça Monsenhor José Cândido - Centro",
-            coordenadas: [-5.12628, -39.730, 8],
+            coordenadas: [-5.12628, -39.730],
             foto: "IMGs/IgrejaMatriz.jpg"
         },
         {
@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
             descricao: "Leitor de tela disponível.",
             tipo: "visual", // verde
             localizacao: "Rua 26 de Junho, 128 - Centro",
-            coordenadas: [-5.12628, -39.740, 8]
+            coordenadas: [-5.12628, -39.740]
         },
         {
             nome: "Hospital Municipal",
             descricao: "Acessível para todas as deficiências.",
             tipo: "ambas", // azul
             localizacao: "Rua 21 de novembro, 12 - Centro",
-            coordenadas: [-5.12628, -39.720, 8]
+            coordenadas: [-5.12628, -39.720]
         }
     ];
 
@@ -84,6 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 ? `<img src="${local.foto}" alt="Foto do local" class="mt-2 rounded w-full max-w-[200px]"/>`
                 : ""
             }
+            <input style="margin-top: 20px;" type="image" src="IMGs/lapis.jpg" alt="Editar" width="15" height="15" onclick="editarLocal({
+                coordenadas: '-5.12628, -39.730',
+                nome: 'Praça da Matriz',
+                localizacao: 'Praça Monsenhor José Cândido - Centro',
+                tipoAcessibilidade: 'Motora',
+                categoria: 'Lazer',
+                recursos: 'Rampa, Vaga PCD',
+                descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça em frente à Tropikaly.',
+                foto: 'IMGs/IgrejaMatriz.jpg'
+            })">
+            <input type="image" src="IMGs/coracao.jpg" alt="Favoritar" width="16" height="16">
         </div>
         `;
 
@@ -125,7 +136,7 @@ function redirecionarParaFormulario(lat, lng) {
 }
 
 function editarLocal(dados) {
-  // Montar URL com todos os dados
-  const params = new URLSearchParams(dados).toString();
-  window.location.href = `adicionarLocal.html?${params}`;
+    // Montar URL com todos os dados
+    const params = new URLSearchParams(dados).toString();
+    window.location.href = `adicionarLocal.html?${params}`;
 }
