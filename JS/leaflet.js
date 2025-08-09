@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ? `<img src="${local.foto}" alt="Foto do local" class="mt-2 rounded w-full max-w-[200px]"/>`
                 : ""
             }
-            <input style="margin-top: 20px;" type="image" src="IMGs/lapis.jpg" alt="Editar" width="15" height="15" onclick="editarLocal({
+            <input style="margin-top: 20px;" type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" onclick="editarLocal({
                 coordenadas: '-5.12628, -39.730',
                 nome: 'Praça da Matriz',
                 localizacao: 'Praça Monsenhor José Cândido - Centro',
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça em frente à Tropikaly.',
                 foto: 'IMGs/IgrejaMatriz.jpg'
             })">
-            <input type="image" src="IMGs/coracao.jpg" alt="Favoritar" width="16" height="16">
+            <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16">
         </div>
         `;
 
