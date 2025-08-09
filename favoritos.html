@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AcessoLivre</title>
 
-  <!-- Script Tailwind-->
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!--Tailwind CSS-->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Migrações locais -->
+  <!--Migrações locais-->
   <link rel="stylesheet" href="CSS/Style.css">
   <link rel="icon" href="IMGs/AcessoLivre.png">
 
@@ -29,7 +33,9 @@
         </svg>
       </button>
       <h1 class="text-xl font-bold"><a href="index.html">AcessoLivre</a></h1>
+
       <a href="index.html"><img src="IMGs/AcessoLivre.png" alt="logo" class="w-8 h-8 rounded-full"></a>
+
     </nav>
 
     <!-- Menu Lateral -->
@@ -46,7 +52,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <a href="index.html#barra-pesquisa" class="...">Pesquisar</a>
+
+
         </li>
+
         <li class="flex items-center gap-2 cursor-pointer hover:text-green-700">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-6">
@@ -76,36 +85,30 @@
 
   </header>
 
+    <!-- Conteúdo -->
+    <main class="flex-1 p-4">
+        <h2 class="text-center py-6 font-semibold mb-4" style="font-size: larger;">Meus Locais Favoritos ❤️</h2>
 
-  <!-- Conteúdo principal MAIN -->
-  <main class="p-6 flex flex-col items-center justify-center">
+        <!-- Lista de Favoritos (será preenchida via JS) -->
+        <div id="lista-favoritos" class="space-y-4">
+            <!-- Exemplo de item -->
+            <!--
+            <div class="bg-white text-black p-4 rounded shadow">
+                <h3 class="font-bold">Nome do Local</h3>
+                <p class="text-sm">Descrição do local...</p>
+                <div class="flex space-x-2 mt-2">
+                    <button class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Remover</button>
+                    <a href="https://maps.google.com" target="_blank" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Ver no mapa</a>
+                </div>
+            </div>
+            -->
+        </div>
 
-    <h2 class="text-lg font-bold mb-4 text-center">
-      Faça Login e aproveite melhor nosso sistema!
-    </h2>
+        <!-- Caso não tenha favoritos -->
+        <p id="sem-favoritos" class="text-center text-gray-300 hidden mt-4" style="font-size: large;">Você ainda não tem locais salvos nos favoritos.</p>
+    </main>
 
-    <form class="bg-white text-black rounded-md p-6 w-full max-w-xs space-y-4">
-      <div>
-        <label for="nome" class="block mb-1">Nome</label>
-        <input type="text" id="nome" placeholder="Seu nome" class="w-full p-2 rounded border border-gray-300" />
-      </div>
-
-      <div>
-        <label for="password" class="block mb-1">Chave de acesso</label>
-        <input type="password" id="password" placeholder="Sua chave"
-          class="w-full p-2 rounded border border-gray-300" />
-      </div>
-
-      <button type="submit" class="w-full bg-gray-800 text-white p-2 rounded hover:bg-gray-700">
-        Entrar
-      </button>
-    </form>
-
-    <a href="criarConta.html" class="mt-4 underline">Criar conta</a>
-
-  </main>
-
-  <!-- Footer -->
+    <!-- Footer -->
   <footer class="bg-green-800 text-white mt-8">
     <div class="max-w-screen-xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
 
@@ -126,8 +129,40 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+    <!-- Script -->
+    <script>
+        // Simulação de favoritos salvos (isso virá do backend no futuro)
+        const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+        const lista = document.getElementById("lista-favoritos");
+        const semFavoritos = document.getElementById("sem-favoritos");
+
+        if (favoritos.length > 0) {
+            favoritos.forEach(local => {
+                const item = document.createElement("div");
+                item.className = "bg-white text-black p-4 rounded shadow";
+                item.innerHTML = `
+                    <h3 class="font-bold">${local.nome}</h3>
+                    <p class="text-sm">${local.descricao}</p>
+                    <div class="flex space-x-2 mt-2">
+                        <button class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" onclick="removerFavorito('${local.id}')">Remover</button>
+                        <a href="${local.link}" target="_blank" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Ver no mapa</a>
+                    </div>
+                `;
+                lista.appendChild(item);
+            });
+        } else {
+            semFavoritos.classList.remove("hidden");
+        }
+
+        function removerFavorito(id) {
+            const novosFavoritos = favoritos.filter(local => local.id !== id);
+            localStorage.setItem("favoritos", JSON.stringify(novosFavoritos));
+            location.reload();
+        }
+    </script>
+    
+<!-- Scripts -->
   <script src="JS/script.js"></script>
 </body>
-
 </html>
