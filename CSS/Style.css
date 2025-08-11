@@ -28,3 +28,7 @@ body {
 #mapContainer.fullscreen .toggleMapSize{
   z-index: 1000;
 }
+
+.cinza{
+  background-color: rgb(162, 162, 162) !important;
+}

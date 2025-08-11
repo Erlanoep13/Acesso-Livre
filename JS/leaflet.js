@@ -26,6 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
         popupAnchor: [0, -32],
     });
 
+    const iconeFalta = L.icon({
+        iconUrl: 'C:\\Users\\rafae\\OneDrive\\Documentos\\VScode\\Semestre 3\\AcessoLivre\\IMGs\\IconeFalta.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32],
+    });
+
 
     const map = L.map("map").setView([-5.12798, -39.733], 14.5);
 
@@ -57,7 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
             tipo: "ambas", // azul
             localizacao: "Rua 21 de novembro, 12 - Centro",
             coordenadas: [-5.12628, -39.720]
+        },
+        {
+            nome: "Praça do Cruzeiro",
+            descricao: "Ainda não há acessibilidade, seria importante ter.",
+            tipo: "falta", // cinza
+            localizacao: "Praça do Cruzeiro - Centro",
+            coordenadas: [-5.129, -39.735]
         }
+
     ];
 
     locaisAcessiveis.forEach(local => {
@@ -72,6 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 break;
             case "ambas":
                 icone = iconeAmbas;
+                break;
+            case "falta":
+                icone = iconeFalta;
                 break;
         }
 
