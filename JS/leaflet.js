@@ -6,28 +6,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Ícones personalizados
     const iconeMotora = L.icon({
-        iconUrl: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+        iconUrl: 'IMGs/IconeMotora.png',
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32],
     });
 
     const iconeVisual = L.icon({
-        iconUrl: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        iconUrl: 'IMGs/IconeVisual.png',
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32],
     });
 
     const iconeAmbas = L.icon({
-        iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+        iconUrl: 'IMGs/IconeAmbas.png',
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32],
     });
 
     const iconeFalta = L.icon({
-        iconUrl: 'C:\\Users\\rafae\\OneDrive\\Documentos\\VScode\\Semestre 3\\AcessoLivre\\IMGs\\IconeFalta.png',
+        iconUrl: 'IMGs/IconeFalta.png',
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32],
