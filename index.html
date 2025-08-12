@@ -86,84 +86,124 @@
 
   </header>
 
-  <!-- Conteúdo principal MAIN-->
-  <main class="p-4 max-w-sm mx-auto">
+
+  <!-- Conteúdo principal MAIN -->
+  <main class="p-4 max-w-sm md:max-w-3xl lg:max-w-7xl mx-auto">
 
     <!-- Campo de pesquisa -->
     <div class="mb-4">
-      <input id="barra-pesquisa" type="text" placeholder="pesquisar local" class="w-full p-2 rounded-2xl text-black" />
+      <input id="barra-pesquisa" type="text" placeholder="pesquisar local"
+        class="w-full p-2 md:p-3 lg:p-2 rounded-md text-black text-base md:text-lg" />
     </div>
 
     <!-- Mapa -->
     <div id="mapContainer" class="relative">
-      <div id="map" class="w-full h-80 rounded-md"></div>
+      <div id="map" class="w-full h-80 md:h-[500px] lg:h-[600px] rounded-md"></div>
       <button id="toggleMapSize"
-        class="absolute bottom-2 left-2 bg-green-700 text-white p-2 rounded shadow hover:bg-green-800 z-[10]">
+        class="absolute bottom-2 left-2 bg-green-700 text-white p-2 md:p-3 rounded shadow hover:bg-green-800 z-[10] text-sm md:text-base">
         ⛶
       </button>
     </div>
 
-
     <!-- Legenda -->
-    <section class="mt-4 space-y-2">
-
+    <section class="mt-4 space-y-2 md:space-y-0 md:flex md:flex-wrap md:gap-6">
       <div class="flex items-center gap-2">
-        <span class="w-4 h-4 bg-red-600 rounded-full inline-block"></span>
-        <p>Deficiência Motora</p>
+        <span class="w-4 h-4 md:w-5 md:h-5 bg-red-600 rounded-full inline-block"></span>
+        <p class="text-sm md:text-base">Deficiência Motora</p>
       </div>
 
       <div class="flex items-center gap-2">
-        <span class="w-4 h-4 bg-green-400 rounded-full inline-block"></span>
-        <p>Deficiência Visual</p>
+        <span class="w-4 h-4 md:w-5 md:h-5 bg-green-400 rounded-full inline-block"></span>
+        <p class="text-sm md:text-base">Deficiência Visual</p>
       </div>
 
       <div class="flex items-center gap-2">
-        <span class="w-4 h-4 bg-blue-600 rounded-full inline-block"></span>
-        <p>Deficiência Motora e Visual</p>
+        <span class="w-4 h-4 md:w-5 md:h-5 bg-blue-600 rounded-full inline-block"></span>
+        <p class="text-sm md:text-base">Deficiência Motora e Visual</p>
       </div>
 
       <div class="flex items-center gap-2">
-        <span class="w-4 h-4 bg-gray-600 rounded-full inline-block cinza"></span>
-        <p>Seria importante ter</p>
+        <span class="w-4 h-4 md:w-5 md:h-5 bg-gray-600 rounded-full inline-block cinza"></span>
+        <p class="text-sm md:text-base">Seria importante ter</p>
       </div>
-
     </section>
-
 
     <!-- Botão Adicionar Local -->
     <div class="flex justify-center mt-4">
-      <a href="adicionarLocal.html" class="bg-green-600 text-white px-20 py-3 rounded hover:bg-green-700 transition">
+      <a href="adicionarLocal.html"
+        class="bg-green-600 text-white px-20 md:px-28 lg:px-32 py-3 md:py-4 rounded hover:bg-green-700 transition text-sm md:text-lg">
         + Adicionar Local
       </a>
     </div>
 
-
     <!-- Lista de locais -->
-    <section class="mt-4 space-y-3">
-
+    <section class="mt-4 space-y-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
       <!-- Exemplo Praça da Matriz -->
-      <div class="bg-white text-black p-3 rounded-md shadow">
-        <h2 class="font-semibold">Praça da Matriz</h2>
-        <p class="text-sm">
+      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow">
+        <h2 class="font-semibold text-base md:text-lg">Praça da Matriz</h2>
+        <p class="text-sm md:text-base">
           Praça Monsenhor José Cândido - Centro. Vaga de motorista reservada para pessoas com deficiência e rampa de
           acesso à praça.
         </p>
-        <input type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" onclick="editarLocal({
-          coordenadas: '-5.12628, -39.730',
-          nome: 'Praça da Matriz',
-          localizacao: 'Praça Monsenhor José Cândido - Centro',
-          tipoAcessibilidade: 'Motora',
-          categoria: 'Lazer',
-          recursos: 'Rampa, Vaga PCD',
-          descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça.',
-          foto: 'IMGs/IgrejaMatriz.jpg'
-        })">
-        <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16">
+        <div class="flex gap-2 mt-2">
+          <input type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" class="cursor-pointer" onclick="editarLocal({
+              coordenadas: '-5.12628, -39.730',
+              nome: 'Praça da Matriz',
+              localizacao: 'Praça Monsenhor José Cândido - Centro',
+              tipoAcessibilidade: 'Motora',
+              categoria: 'Lazer',
+              recursos: 'Rampa, Vaga PCD',
+              descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça.',
+              foto: 'IMGs/IgrejaMatriz.jpg'
+            })">
+          <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16" class="cursor-pointer">
+        </div>
       </div>
 
-    </section>
+      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow">
+        <h2 class="font-semibold text-base md:text-lg">Praça da Matriz</h2>
+        <p class="text-sm md:text-base">
+          Praça Monsenhor José Cândido - Centro. Vaga de motorista reservada para pessoas com deficiência e rampa de
+          acesso à praça.
+        </p>
+        <div class="flex gap-2 mt-2">
+          <input type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" class="cursor-pointer" onclick="editarLocal({
+              coordenadas: '-5.12628, -39.730',
+              nome: 'Praça da Matriz',
+              localizacao: 'Praça Monsenhor José Cândido - Centro',
+              tipoAcessibilidade: 'Motora',
+              categoria: 'Lazer',
+              recursos: 'Rampa, Vaga PCD',
+              descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça.',
+              foto: 'IMGs/IgrejaMatriz.jpg'
+            })">
+          <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16" class="cursor-pointer">
+        </div>
+      </div>
 
+      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow">
+        <h2 class="font-semibold text-base md:text-lg">Praça da Matriz</h2>
+        <p class="text-sm md:text-base">
+          Praça Monsenhor José Cândido - Centro. Vaga de motorista reservada para pessoas com deficiência e rampa de
+          acesso à praça.
+        </p>
+        <div class="flex gap-2 mt-2">
+          <input type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" class="cursor-pointer" onclick="editarLocal({
+              coordenadas: '-5.12628, -39.730',
+              nome: 'Praça da Matriz',
+              localizacao: 'Praça Monsenhor José Cândido - Centro',
+              tipoAcessibilidade: 'Motora',
+              categoria: 'Lazer',
+              recursos: 'Rampa, Vaga PCD',
+              descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça.',
+              foto: 'IMGs/IgrejaMatriz.jpg'
+            })">
+          <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16" class="cursor-pointer">
+        </div>
+      </div>
+    </section>
   </main>
+
 
   <!-- Footer -->
   <footer class="bg-green-800 text-white mt-8">
