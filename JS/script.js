@@ -42,3 +42,23 @@ if (menuButton && sideMenu && closeMenu) {
     sideMenu.classList.add("-translate-x-full");
   });
 }
+
+//Script para abrir/fechar Botão Flutuante(pop up) 
+  const openPopup = document.getElementById("openPopup");
+  const closePopup = document.getElementById("closePopup");
+  const popupModal = document.getElementById("popupModal");
+
+  openPopup.addEventListener("click", () => {
+    popupModal.classList.remove("hidden");
+  });
+
+  closePopup.addEventListener("click", () => {
+    popupModal.classList.add("hidden");
+  });
+
+  // Fecha ao clicar fora do modal
+  popupModal.addEventListener("click", (e) => {
+    if (e.target === popupModal) {
+      popupModal.classList.add("hidden");
+    }
+  });
