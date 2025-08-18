@@ -1,0 +1,46 @@
+CREATE TABLE usuario (
+    ChaveUser INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Nome VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE locais (
+    IdLocal INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    NomeLocal VARCHAR(85) NOT NULL,
+    TipoAcessibilidade VARCHAR(30) NOT NULL,
+    Categoria VARCHAR(30) NOT NULL,
+    Imagem TEXT,
+    Descricao TEXT,
+    Localizacao VARCHAR(30) NOT NULL,
+    Latitude DECIMAL(9,6) NOT NULL,
+    Longitude DECIMAL(9,6) NOT NULL,
+    ChaveUser INT NOT NULL,
+    FOREIGN KEY (ChaveUser) REFERENCES usuario(ChaveUser)
+);
+
+
+CREATE TABLE recursos (
+    IdRecurso INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    NomeRecurso VARCHAR(60) NOT NULL
+
+);
+
+
+CREATE TABLE localrecursos (
+    	IdLocal INT NOT NULL,
+    	IdRecurso INT NOT NULL,
+	PRIMARY KEY (IdLocal, IdRecurso),
+	FOREIGN KEY (IdLocal) REFERENCES locais(IdLocal),
+	FOREIGN KEY (IdRecurso) REFERENCES recursos(IdRecurso)
+
+);
+
+
+CREATE TABLE favoritos (
+    	ChaveUser INT NOT NULL,
+    	IdLocal	INT NOT NULL,
+	PRIMARY KEY (ChaveUser, IdLocal),
+	FOREIGN KEY (IdLocal) REFERENCES locais(IdLocal),
+	FOREIGN KEY (ChaveUser) REFERENCES usuario(ChaveUser)
+
+);
