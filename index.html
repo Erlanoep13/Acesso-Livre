@@ -87,62 +87,64 @@
   </header>
 
   <!-- Botão Flutuante -->
-<button id="openPopup" 
-  class="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
-  ℹ️ Explicações Gerais
-</button>
+  <button id="openPopup"
+    class="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+    Explicações Gerais
+  </button>
 
-<!-- Fundo do Modal -->
-<div id="popupModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-  <!-- Caixa do Modal -->
-  <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 relative overflow-y-auto max-h-[80vh]">
-    <!-- Botão de Fechar -->
-    <button id="closePopup" class="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl">✖</button>
-    
-    <h2 class="text-2xl font-bold text-green-800 mb-4">Informações de Acessibilidade</h2>
-    
-    <div class="space-y-4 text-black">
-      <!-- Deficiência Motora -->
-      <div class="flex items-start gap-3">
-        <div class="w-6 h-6 rounded-full bg-red-600"></div>
-        <div>
-          <h3 class="font-semibold">Deficiência Motora</h3>
-          <p>Locais sinalizados em <b>vermelho</b> possuem acessibilidade voltada a pessoas com deficiência motora (ex.: rampas, pisos antiderrapantes, corrimãos).</p>
-          <img src="IMGs/n_rampas_acessibilidade.jpg" alt="Acessibilidade Motora" class="w-100 mt-5">
+  <!-- Fundo do Modal -->
+  <div id="popupModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <!-- Caixa do Modal -->
+    <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 relative overflow-y-auto max-h-[80vh]">
+      <!-- Botão de Fechar -->
+      <button id="closePopup" class="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl">✖</button>
+
+      <h2 class="text-2xl font-bold text-green-800 mb-4">Informações de Acessibilidade</h2>
+
+      <div class="space-y-4 text-black">
+        <!-- Deficiência Motora -->
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full bg-red-600"></div>
+          <div>
+            <h3 class="font-semibold">Deficiência Motora</h3>
+            <p>Locais sinalizados em <b>vermelho</b> possuem acessibilidade voltada a pessoas com deficiência motora
+              (ex.: rampas, pisos antiderrapantes, corrimãos).</p>
+            <img src="IMGs/n_rampas_acessibilidade.jpg" alt="Acessibilidade Motora" class="w-100 mt-5">
+          </div>
         </div>
-      </div>
 
-      <!-- Deficiência Visual -->
-      <div class="flex items-start gap-3">
-        <div class="w-6 h-6 rounded-full bg-green-600"></div>
-        <div>
-          <h3 class="font-semibold">Deficiência Visual</h3>
-          <p>Locais em <b>verde</b> possuem recursos para pessoas com deficiência visual (ex.: piso tátil, placas em braille, sinal sonoro).</p>
-          <img src="IMGs/piso tátil.png" alt="Acessibilidade Visual" class="w-100 mt-5">
+        <!-- Deficiência Visual -->
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full bg-green-600"></div>
+          <div>
+            <h3 class="font-semibold">Deficiência Visual</h3>
+            <p>Locais em <b>verde</b> possuem recursos para pessoas com deficiência visual (ex.: piso tátil, placas em
+              braille, sinal sonoro).</p>
+            <img src="IMGs/piso tátil.png" alt="Acessibilidade Visual" class="w-100 mt-5">
+          </div>
         </div>
-      </div>
 
-      <!-- Deficiência Motora e Visual -->
-      <div class="flex items-start gap-3">
-        <div class="w-6 h-6 rounded-full bg-blue-600"></div>
-        <div>
-          <h3 class="font-semibold">Deficiência Motora e Visual</h3>
-          <p>Em <b>azul</b> estão os locais que atendem tanto pessoas com deficiência motora quanto visual.</p>
-          <img src="IMGs/visual e motora.jpg" alt="Motora e Visual" class="w-100 mt-5">
+        <!-- Deficiência Motora e Visual -->
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full bg-blue-600"></div>
+          <div>
+            <h3 class="font-semibold">Deficiência Motora e Visual</h3>
+            <p>Em <b>azul</b> estão os locais que atendem tanto pessoas com deficiência motora quanto visual.</p>
+            <img src="IMGs/visual e motora.jpg" alt="Motora e Visual" class="w-100 mt-5">
+          </div>
         </div>
-      </div>
 
-      <!-- Seria Importante Ter -->
-      <div class="flex items-start gap-3">
-        <div class="w-6 h-6 rounded-full bg-gray-400"></div>
-        <div>
-          <h3 class="font-semibold">Seria importante ter</h3>
-          <p>Locais onde a acessibilidade ainda não está presente, mas seria essencial incluir.</p>
+        <!-- Seria Importante Ter -->
+        <div class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full bg-gray-400"></div>
+          <div>
+            <h3 class="font-semibold">Seria importante ter</h3>
+            <p>Locais onde a acessibilidade ainda não está presente, mas seria essencial incluir.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
   <!-- Conteúdo principal MAIN -->
@@ -195,9 +197,9 @@
     </div>
 
     <!-- Lista de locais -->
-    <section class="mt-4 space-y-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
+    <section class="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
       <!-- Exemplo Praça da Matriz -->
-      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow">
+      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow h-full flex flex-col justify-between">
         <h2 class="font-semibold text-base md:text-lg">Praça da Matriz</h2>
         <p class="text-sm md:text-base">
           Praça Monsenhor José Cândido - Centro. Vaga de motorista reservada para pessoas com deficiência e rampa de
@@ -218,7 +220,7 @@
         </div>
       </div>
 
-      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow">
+      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow h-full flex flex-col justify-between">
         <h2 class="font-semibold text-base md:text-lg">Praça da Matriz</h2>
         <p class="text-sm md:text-base">
           Praça Monsenhor José Cândido - Centro. Vaga de motorista reservada para pessoas com deficiência e rampa de
@@ -239,7 +241,7 @@
         </div>
       </div>
 
-      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow">
+      <div class="bg-white text-black p-3 md:p-4 rounded-md shadow h-full flex flex-col justify-between">
         <h2 class="font-semibold text-base md:text-lg">Praça da Matriz</h2>
         <p class="text-sm md:text-base">
           Praça Monsenhor José Cândido - Centro. Vaga de motorista reservada para pessoas com deficiência e rampa de
@@ -259,6 +261,7 @@
           <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16" class="cursor-pointer">
         </div>
       </div>
+
     </section>
   </main>
 
