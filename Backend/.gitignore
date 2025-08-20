@@ -1,9 +1,24 @@
-# Ignorar dependências
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
 
 # Logs
+logs
 *.log
-npm-debug.log*
+*.out
+*.pid
+*.seed
 
-# Sistema do macOS e outros
-.DS_Store
+# Build
+dist/
+build/
+.cache/
+.next/
+out/
+coverage/
+*.tsbuildinfo
