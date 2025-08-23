@@ -9,19 +9,16 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Migrações locais -->
+  <!-- CSS local -->
   <link rel="stylesheet" href="CSS/Style.css">
   <link rel="icon" href="IMGs/AcessoLivre.png">
-
 </head>
 
 <body class="bg-green-900 text-white flex flex-col min-h-screen">
-
   <!-- Header -->
   <header>
-    <!-- Navbar -->
     <nav class="bg-green-800 p-4 flex justify-between items-center">
-      <button id="menuButton">
+      <button id="menuButton" aria-label="menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -35,7 +32,7 @@
       class="fixed top-0 left-0 h-full w-64 bg-gray-100 text-black transform -translate-x-full transition-transform duration-200 ease-in-out shadow-lg z-50">
       <div class="p-4 border-b flex items-center justify-between">
         <h2 class="font-bold text-lg">AcessoLivre</h2>
-        <button id="closeMenu" class="text-gray-600">&times;</button>
+        <button id="closeMenu" class="text-gray-600" aria-label="fechar menu">&times;</button>
       </div>
 
       <ul class="p-4 space-y-3">
@@ -72,27 +69,29 @@
     </div>
   </header>
 
-  <!-- Conteúdo principal MAIN -->
+  <!-- Conteúdo principal -->
   <main class="flex-1 flex flex-col items-center justify-center p-6">
     <h2 class="text-lg md:text-xl font-bold mb-6 text-center">
       Crie sua conta agora mesmo!
     </h2>
 
-    <form class="bg-white text-black rounded-md p-6 w-full max-w-xs md:max-w-md space-y-4 shadow-lg">
+    <form id="form-criar-conta"
+      class="bg-white text-black rounded-md p-6 w-full max-w-xs md:max-w-md space-y-4 shadow-lg">
       <div>
         <label for="nome" class="block mb-1">Nome</label>
         <input type="text" id="nome" name="nome" placeholder="Seu nome"
-          class="w-full p-2 md:p-3 rounded border border-gray-300">
+          class="w-full p-2 md:p-3 rounded border border-gray-300" required>
       </div>
 
       <button type="submit" class="w-full bg-green-800 text-white p-2 md:p-3 rounded hover:bg-green-700 transition">
         Criar Conta
       </button>
+
+      <!-- Aqui aparece a mensagem do backend -->
+      <div id="mensagem" class="mt-4 text-center font-semibold"></div>
+
     </form>
 
-    <div class="chaveAcesso mt-4">
-      <p class="text-sm md:text-base">Sua chave de acesso é: </p>
-    </div>
 
     <p class="mt-4 text-center text-sm md:text-base">
       Já possui uma conta?
@@ -118,8 +117,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="JS/script.js"></script>
+  <script src="JS/script.js" defer></script>
+  <script src="JS/conexaoBack.js" defer></script>
 </body>
-
 
 </html>
