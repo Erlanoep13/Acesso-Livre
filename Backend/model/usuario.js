@@ -5,7 +5,7 @@ class Usuario {
     const query = `
       INSERT INTO usuario (nome)
       VALUES ($1)
-      RETURNING "ChaveUser" as chaveuser, "Nome" as nome;
+      RETURNING "chave_user" as chave_user, "nome" as nome;
     `;
     const values = [nome];
     const result = await pool.query(query, values);

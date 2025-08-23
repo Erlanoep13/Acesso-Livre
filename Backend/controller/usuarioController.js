@@ -12,7 +12,7 @@ export async function criarUsuario(req, res) {
 
     return res.status(201).json({
       message: "Usuário criado com sucesso!",
-      chave: novoUsuario.chaveuser,
+      chave: novoUsuario.chave_user,
       nome: novoUsuario.nome
     });
   } catch (err) {
