@@ -1,46 +1,44 @@
 CREATE TABLE usuario (
-    ChaveUser INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    Nome VARCHAR(50) NOT NULL
+    chave_user INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
 );
 
 
 CREATE TABLE locais (
-    IdLocal INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    NomeLocal VARCHAR(85) NOT NULL,
-    TipoAcessibilidade VARCHAR(30) NOT NULL,
-    Categoria VARCHAR(30) NOT NULL,
-    Imagem TEXT,
-    Descricao TEXT,
-    Localizacao VARCHAR(30) NOT NULL,
-    Latitude DECIMAL(9,6) NOT NULL,
-    Longitude DECIMAL(9,6) NOT NULL,
-    ChaveUser INT NOT NULL,
-    FOREIGN KEY (ChaveUser) REFERENCES usuario(ChaveUser)
+    id_local INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome_local VARCHAR(85) NOT NULL,
+    tipo_acessibilidade VARCHAR(30) NOT NULL,
+    categoria VARCHAR(30) NOT NULL,
+    imagem TEXT,
+    descricao TEXT,
+    localizacao VARCHAR(30) NOT NULL,
+    latitude DECIMAL(9,6) NOT NULL,
+    longitude DECIMAL(9,6) NOT NULL,
+    chave_user INT NOT NULL,
+    FOREIGN KEY (chave_user) REFERENCES usuario(chave_user)
 );
 
 
 CREATE TABLE recursos (
-    IdRecurso INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    NomeRecurso VARCHAR(60) NOT NULL
+    id_recurso INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nome_recurso VARCHAR(60) NOT NULL
 
 );
 
 
 CREATE TABLE localrecursos (
-    	IdLocal INT NOT NULL,
-    	IdRecurso INT NOT NULL,
-	PRIMARY KEY (IdLocal, IdRecurso),
-	FOREIGN KEY (IdLocal) REFERENCES locais(IdLocal),
-	FOREIGN KEY (IdRecurso) REFERENCES recursos(IdRecurso)
-
+    id_local INT NOT NULL,
+    id_recurso INT NOT NULL,
+	PRIMARY KEY (id_local, id_recurso),
+	FOREIGN KEY (id_local) REFERENCES locais(id_local),
+	FOREIGN KEY (id_recurso) REFERENCES recursos(id_recurso)
 );
 
 
 CREATE TABLE favoritos (
-    	ChaveUser INT NOT NULL,
-    	IdLocal	INT NOT NULL,
-	PRIMARY KEY (ChaveUser, IdLocal),
-	FOREIGN KEY (IdLocal) REFERENCES locais(IdLocal),
-	FOREIGN KEY (ChaveUser) REFERENCES usuario(ChaveUser)
-
+    chave_user INT NOT NULL,
+    id_local INT NOT NULL,
+	PRIMARY KEY (chave_user, id_local),
+	FOREIGN KEY (id_local) REFERENCES locais(id_local),
+	FOREIGN KEY (chave_user) REFERENCES usuario(chave_user)
 );
