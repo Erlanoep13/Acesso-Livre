@@ -150,6 +150,9 @@
   <!-- Conteúdo principal MAIN -->
   <main class="p-4 max-w-sm md:max-w-3xl lg:max-w-7xl mx-auto">
 
+    <!-- Mensagem de boas-vindas -->
+    <div id="boas-vindas" class="text-center text-xl font-bold text-green-400 mb-4"></div>
+
     <!-- Campo de pesquisa -->
     <div class="mb-4">
       <input id="barra-pesquisa" type="text" placeholder="pesquisar local"
@@ -290,6 +293,27 @@
   <!-- Scripts -->
   <script src="JS/script.js"></script>
   <script src="JS/leaflet.js"></script>
+  <script src="JS/conexaoUsuario.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const usuarioLogado = localStorage.getItem("usuarioLogado");
+      const divBoasVindas = document.getElementById("boas-vindas");
+      const loginLink = document.getElementById("login-link");
+
+      if (usuarioLogado) {
+        const usuario = JSON.parse(usuarioLogado);
+        divBoasVindas.textContent = `Seja bem-vindo, ${usuario.nome}!`;
+
+        // Opcional: mudar o link "Login" para "Sair"
+        loginLink.textContent = "Sair";
+        loginLink.href = "#";
+        loginLink.addEventListener("click", () => {
+          localStorage.removeItem("usuarioLogado");
+          window.location.reload();
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
