@@ -2,12 +2,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // --- CADASTRO ---
-    const form = document.getElementById("form-criar-conta");
+    const formCadastro = document.getElementById("form-criar-conta");
     const mensagemDiv = document.getElementById("mensagem");
     const inputNome = document.getElementById("nome");
 
-    if (form) {
-        form.addEventListener("submit", async (e) => {
+    if (formCadastro) {
+        formCadastro.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const nome = inputNome.value;
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (resposta.ok) {
                     // Mensagem com destaque apenas na chave
                     mensagemDiv.innerHTML = `
-                        Conta criada com sucesso! Sua chave de acesso é: 
-                        <span class="text-green-500 font-bold text-xl">${dados.chave_user}</span>
-                    `;
+            Conta criada com sucesso! Sua chave de acesso é: 
+            <span class="text-green-500 font-bold text-xl">${dados.chave_user}</span>
+          `;
 
                     // Limpa o input e dá foco novamente
                     inputNome.value = "";
@@ -48,37 +48,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- LOGIN ---
-    const formLogin = document.getElementById("form-login");
-    const msgDiv = document.getElementById("mensagem");
+    const formLogin = document.querySelector("form#form-login");
+    const inputLoginNome = document.getElementById("nome");
+    const inputLoginChave = document.getElementById("chave_user"); // <-- corrigido
 
     if (formLogin) {
         formLogin.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const nome = document.getElementById("nome").value;
-            const chave_user = document.getElementById("chave_user").value;
+            const nome = inputLoginNome.value;
+            const chave_user = inputLoginChave.value;
 
             try {
                 const resposta = await fetch("http://localhost:3000/usuarios/login", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ nome, chave_user })
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ nome, chave_user }),
                 });
 
                 const dados = await resposta.json();
 
                 if (resposta.ok) {
-                    // salva no localStorage para usar depois na index.html
-                    localStorage.setItem("usuarioLogado", JSON.stringify(dados.usuario));
+                    // Salva login no localStorage
+                    localStorage.setItem("usuarioLogado", JSON.stringify({
+                        logado: true,
+                        chave_user: dados.chave_user,
+                        nome: dados.nome
+                    }));
 
-                    // redireciona para página inicial
+                    // Redireciona para a página principal
                     window.location.href = "index.html";
                 } else {
-                    msgDiv.textContent = dados.error || "Falha no login.";
+                    alert(dados.error || "Erro ao fazer login.");
                 }
             } catch (erro) {
-                console.error("Erro no login:", erro);
-                msgDiv.textContent = "Erro ao conectar com o servidor.";
+                console.error("Erro ao conectar com backend:", erro);
+                alert("Erro ao conectar com o servidor.");
             }
         });
     }

@@ -1,34 +1,4 @@
-const btnSalvar = document.getElementById("btnSalvar");
-
-if (btnSalvar) {
-  btnSalvar.addEventListener("click", function () {
-    const nome = document.getElementById("nome").value;
-    const descricao = document.getElementById("descricao").value;
-    const categoria = document.getElementById("categoria").value;
-    const rampa = document.getElementById("rampa").checked;
-    const banheiro = document.getElementById("banheiro").checked;
-    const libras = document.getElementById("libras").checked;
-    const localizacao = document.getElementById("localizacao").value;
-
-    console.log({
-      nome,
-      descricao,
-      categoria,
-      acessibilidade: { rampa, banheiro, libras },
-      localizacao,
-    });
-
-    const msg = document.getElementById("mensagem");
-    msg.classList.remove("hidden");
-
-    setTimeout(() => {
-      msg.classList.add("hidden");
-    }, 3000);
-  });
-}
-
-
-//navbar
+// --- NAVBAR ---
 const menuButton = document.getElementById("menuButton");
 const sideMenu = document.getElementById("sideMenu");
 const closeMenu = document.getElementById("closeMenu");
@@ -43,11 +13,12 @@ if (menuButton && sideMenu && closeMenu) {
   });
 }
 
-//Script para abrir/fechar Botão Flutuante(pop up) 
-  const openPopup = document.getElementById("openPopup");
-  const closePopup = document.getElementById("closePopup");
-  const popupModal = document.getElementById("popupModal");
+// --- POPUP (Botão flutuante) ---
+const openPopup = document.getElementById("openPopup");
+const closePopup = document.getElementById("closePopup");
+const popupModal = document.getElementById("popupModal");
 
+if (openPopup && closePopup && popupModal) {
   openPopup.addEventListener("click", () => {
     popupModal.classList.remove("hidden");
   });
@@ -62,3 +33,24 @@ if (menuButton && sideMenu && closeMenu) {
       popupModal.classList.add("hidden");
     }
   });
+}
+
+// --- LOGIN / LOGOUT ---
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+  const loginLink = document.querySelector('a[href="login.html"]');
+
+  if (usuarioLogado && usuarioLogado.logado) {
+    // Troca "Login" por "Sair"
+    if (loginLink) {
+      loginLink.textContent = "Sair";
+      loginLink.href = "#";
+
+      loginLink.addEventListener("click", () => {
+        localStorage.removeItem("usuarioLogado");
+        window.location.href = "index.html";
+      });
+    }
+  }
+});
