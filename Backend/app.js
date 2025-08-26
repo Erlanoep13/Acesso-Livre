@@ -1,6 +1,9 @@
+// Backend/app.js
 import express from "express";
 import cors from "cors";
+
 import usuarioRoutes from "./routes/usuarioRoutes.js";
+import localRoutes from "./routes/localRoutes.js";
 
 const app = express();
 
@@ -10,6 +13,7 @@ app.use(express.json());
 
 // Rotas
 app.use("/usuarios", usuarioRoutes);
+app.use("/locais", localRoutes);
 
 app.get("/", (req, res) => {
   res.send("Servidor AcessoLivre está funcionando 🚀");
