@@ -7,4 +7,7 @@ const router = express.Router();
 // GET /locais/buscar?nome=Praça
 router.get("/buscar", localController.buscarLocais);
 
+// POST /locais/criar
+router.post("/criar", localController.criarLocal);
+
 export default router;

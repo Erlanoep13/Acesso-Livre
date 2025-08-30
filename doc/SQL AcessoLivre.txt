@@ -11,7 +11,7 @@ CREATE TABLE locais (
     categoria VARCHAR(30) NOT NULL,
     imagem TEXT,
     descricao TEXT,
-    localizacao VARCHAR(30) NOT NULL,
+    localizacao VARCHAR(70) NOT NULL,
     latitude DECIMAL(9,6) NOT NULL,
     longitude DECIMAL(9,6) NOT NULL,
     chave_user INT NOT NULL,
