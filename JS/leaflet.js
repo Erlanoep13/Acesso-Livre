@@ -1,8 +1,8 @@
 // LEAFLET
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const mapContainer = document.getElementById("mapContainer");
-    if (!mapContainer) return; // evita erro
+    if (!mapContainer) return;
 
     // Ícones personalizados
     const iconeMotora = L.icon({
@@ -33,95 +33,68 @@ document.addEventListener("DOMContentLoaded", function () {
         popupAnchor: [0, -32],
     });
 
-
+    // Inicia o mapa
     const map = L.map("map").setView([-5.12798, -39.733], 14.5);
 
-
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors"
     }).addTo(map);
 
+    // Buscar locais reais do backend
+    try {
+        const resposta = await fetch("http://localhost:3000/locais");
+        const locais = await resposta.json();
 
-    // Exemplos mockados
-    const locaisAcessiveis = [
-        {
-            nome: "Praça da Matriz",
-            descricao: "Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça em frente à Tropikaly.",
-            tipo: "motora", // vermelho
-            localizacao: "Praça Monsenhor José Cândido - Centro",
-            coordenadas: [-5.12628, -39.730],
-            foto: "IMGs/IgrejaMatriz.jpg"
-        },
-        {
-            nome: "Biblioteca Pública",
-            descricao: "Leitor de tela disponível.",
-            tipo: "visual", // verde
-            localizacao: "Rua 26 de Junho, 128 - Centro",
-            coordenadas: [-5.12628, -39.740]
-        },
-        {
-            nome: "Hospital Municipal",
-            descricao: "Acessível para todas as deficiências.",
-            tipo: "ambas", // azul
-            localizacao: "Rua 21 de novembro, 12 - Centro",
-            coordenadas: [-5.12628, -39.720]
-        },
-        {
-            nome: "Praça do Cruzeiro",
-            descricao: "Ainda não há acessibilidade, seria importante ter.",
-            tipo: "falta", // cinza
-            localizacao: "Praça do Cruzeiro - Centro",
-            coordenadas: [-5.129, -39.735]
-        }
+        locais.forEach(local => {
+            let icone;
 
-    ];
-
-    locaisAcessiveis.forEach(local => {
-        let icone;
-
-        switch (local.tipo) {
-            case "motora":
-                icone = iconeMotora;
-                break;
-            case "visual":
-                icone = iconeVisual;
-                break;
-            case "ambas":
-                icone = iconeAmbas;
-                break;
-            case "falta":
-                icone = iconeFalta;
-                break;
-        }
-
-        const popupContent = `
-        <div class="text-sm">
-            <p><strong>${local.nome}</strong></p>
-            <p>${local.localizacao}</p>
-            <p class="mt-1">${local.descricao}</p>
-            ${local.foto
-                ? `<img src="${local.foto}" alt="Foto do local" class="mt-2 rounded w-full max-w-[200px]"/>`
-                : ""
+            switch (local.tipo_acessibilidade.toLowerCase()) {
+                case "motora":
+                    icone = iconeMotora;
+                    break;
+                case "visual":
+                    icone = iconeVisual;
+                    break;
+                case "ambas":
+                    icone = iconeAmbas;
+                    break;
+                default:
+                    icone = iconeFalta;
             }
-            <input style="margin-top: 20px;" type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" onclick="editarLocal({
-                coordenadas: '-5.12628, -39.730',
-                nome: 'Praça da Matriz',
-                localizacao: 'Praça Monsenhor José Cândido - Centro',
-                tipoAcessibilidade: 'Motora',
-                categoria: 'Lazer',
-                recursos: 'Rampa, Vaga PCD',
-                descricao: 'Vaga de motorista reservada para pessoas com deficiência e rampa de acesso à praça em frente à Tropikaly.',
-                foto: 'IMGs/IgrejaMatriz.jpg'
-            })">
-            <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16">
-        </div>
-        `;
 
-        L.marker(local.coordenadas, { icon: icone })
-            .addTo(map)
-            .bindPopup(popupContent);
+            const popupContent = `
+            <div class="text-sm">
+                <p><strong>${local.nome_local}</strong></p>
+                <p>${local.localizacao}</p>
+                <p class="mt-1">${local.descricao}</p>
+                ${local.imagem
+                    ? `<img src="${local.imagem}" alt="Foto do local" class="mt-2 rounded w-full max-w-[200px]"/>`
+                    : ""
+                }
+                <input style="margin-top: 20px;" type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" onclick="editarLocal({
+                    coordenadas: '${local.latitude}, ${local.longitude}',
+                    nome: '${local.nome_local}',
+                    localizacao: '${local.localizacao}',
+                    tipoAcessibilidade: '${local.tipo_acessibilidade}',
+                    categoria: '${local.categoria}',
+                    recursos: '${local.recursos || ""}',
+                    descricao: '${local.descricao || ""}',
+                    foto: '${local.imagem || ""}'
+                })">
+                <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16">
+            </div>
+            `;
 
-    });
+            L.marker([local.latitude, local.longitude], { icon: icone })
+                .addTo(map)
+                .bindPopup(popupContent);
+        });
 
+    } catch (erro) {
+        console.error("Erro ao carregar locais do backend:", erro);
+    }
+
+    // Clique para adicionar novo local
     map.on("click", function (e) {
         const { lat, lng } = e.latlng;
 
@@ -139,12 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .openOn(map);
     });
 
+    // Botão de expandir mapa
     const toggleMapSizeBtn = document.getElementById("toggleMapSize");
-
     if (toggleMapSizeBtn && mapContainer) {
         toggleMapSizeBtn.addEventListener("click", () => {
             mapContainer.classList.toggle("fullscreen");
-            map.invalidateSize(); // Leaflet precisa disso para ajustar o tamanho
+            map.invalidateSize();
         });
     }
 });

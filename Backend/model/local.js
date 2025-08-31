@@ -30,16 +30,16 @@ const Local = {
     }
   },
 
-  // 🔹 Novo método: buscar todos os locais
-  async listarTodos() {
+  async buscarTodos() {
     try {
-      const result = await pool.query("SELECT * FROM locais ORDER BY id ASC");
+      const result = await pool.query("SELECT * FROM locais");
       return result.rows;
     } catch (err) {
-      console.error("Erro ao listar locais:", err);
+      console.error("Erro ao buscar todos os locais:", err);
       throw err;
     }
   }
+
 };
 
 export default Local;

@@ -57,16 +57,17 @@ const localController = {
     }
   },
 
-  // 🔹 Novo método: listar todos os locais
-  async listarTodos(req, res) {
+  // Listar todos os locais
+  async listarLocais(req, res) {
     try {
-      const locais = await Local.listarTodos();
-      res.json({ encontrados: locais.length > 0, locais });
+      const locais = await Local.buscarTodos();
+      res.json(locais);
     } catch (err) {
-      console.error("Erro no controller:", err);
-      res.status(500).json({ message: "Erro ao listar locais" });
+      console.error("Erro ao listar locais:", err);
+      res.status(500).json({ message: "Erro no servidor" });
     }
   }
+
 };
 
 export default localController;
