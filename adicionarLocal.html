@@ -78,8 +78,9 @@
   <main class="flex items-center justify-center min-h-screen" style="margin-top: 20px;">
 
     <section class="w-[90%] max-w-md bg-white rounded-2xl p-4 shadow-lg">
+
       <!-- Formulário -->
-      <form class="space-y-4">
+      <form id="form-adicionar-local" class="space-y-4">
 
         <!-- Coordenadas -->
         <div>
@@ -92,7 +93,7 @@
         <!-- Nome do Local -->
         <div>
           <label class="block text-sm font-medium">Nome do Local:</label>
-          <input type="text" placeholder="Ex: Escola..."
+          <input type="text" id="nome_local" placeholder="Ex: Escola..."
             class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
             required />
         </div>
@@ -100,7 +101,7 @@
         <!-- Localização -->
         <div>
           <label class="block text-sm font-medium">Localização:</label>
-          <input type="text" placeholder="Ex: Centro, Rua 26 de Junho, 128"
+          <input type="text" id="localizacao" placeholder="Ex: Centro, Rua 26 de Junho, 128"
             class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
             required />
         </div>
@@ -108,7 +109,7 @@
         <!-- Tipo de Acessibilidade -->
         <div>
           <label class="block text-sm font-medium">Tipo de Acessibilidade:</label>
-          <select
+          <select id="tipo_acessibilidade"
             class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
             required>
             <option>Motora</option>
@@ -121,15 +122,15 @@
         <!-- Categoria do Local -->
         <div>
           <label class="block text-sm font-medium">Categoria do Local:</label>
-          <input type="text" placeholder="Ex: Educação, Saúde..."
+          <input type="text" id="categoria" placeholder="Ex: Educação, Saúde..."
             class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
             required />
         </div>
 
-        <!-- Recursos de Acessibilidade Presentes -->
+        <!-- Recursos -->
         <div>
           <label class="block text-sm font-medium">Recursos de Acessibilidade Presentes:</label>
-          <input type="text" placeholder="Ex: Rampas, Braille..."
+          <input type="text" id="recursos" placeholder="Ex: Rampas, Braille..."
             class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
             required />
         </div>
@@ -149,16 +150,20 @@
         <!-- Descrição -->
         <div>
           <label class="block text-sm font-medium">Descrição:</label>
-          <textarea rows="4" placeholder="..."
+          <textarea rows="4" id="descricao" placeholder="..."
             class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
             required></textarea>
         </div>
 
         <!-- Botão -->
-        <button type="button" class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition">
+        <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition">
           Salvar Local
         </button>
+
+        <!-- Mensagens -->
+        <div id="mensagemLocal" class="mt-2 text-center text-sm"></div>
       </form>
+
     </section>
   </main>
 
@@ -185,6 +190,8 @@
 
   <!-- Scripts -->
   <script src="JS/script.js"></script>
+  <script src="JS/conexaoLocal.js"></script>
+
 
   <!-- Recebendo valores dos locais -->
   <script>
