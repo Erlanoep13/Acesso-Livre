@@ -1,4 +1,3 @@
-// Backend/controller/localController.js
 import Local from "../model/local.js";
 
 const localController = {
@@ -35,7 +34,6 @@ const localController = {
         chave_user
       } = req.body;
 
-      // Campos obrigatórios
       if (!nome_local || !tipo_acessibilidade || !categoria || !localizacao || !latitude || !longitude || !chave_user) {
         return res.status(400).json({ message: "Campos obrigatórios não informados" });
       }
@@ -56,6 +54,17 @@ const localController = {
     } catch (err) {
       console.error("Erro no controller:", err);
       res.status(500).json({ message: "Erro ao criar local" });
+    }
+  },
+
+  // 🔹 Novo método: listar todos os locais
+  async listarTodos(req, res) {
+    try {
+      const locais = await Local.listarTodos();
+      res.json({ encontrados: locais.length > 0, locais });
+    } catch (err) {
+      console.error("Erro no controller:", err);
+      res.status(500).json({ message: "Erro ao listar locais" });
     }
   }
 };
