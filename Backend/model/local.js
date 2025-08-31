@@ -1,4 +1,3 @@
-// Backend/model/local.js
 import pool from "../config/db.js";
 
 const Local = {
@@ -27,6 +26,17 @@ const Local = {
       return result.rows[0];
     } catch (err) {
       console.error("Erro ao criar local:", err);
+      throw err;
+    }
+  },
+
+  // 🔹 Novo método: buscar todos os locais
+  async listarTodos() {
+    try {
+      const result = await pool.query("SELECT * FROM locais ORDER BY id ASC");
+      return result.rows;
+    } catch (err) {
+      console.error("Erro ao listar locais:", err);
       throw err;
     }
   }

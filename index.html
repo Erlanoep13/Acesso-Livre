@@ -154,10 +154,24 @@
     <div id="boas-vindas" class="text-center text-xl font-bold text-black-400 mb-4"></div>
 
     <!-- Campo de pesquisa -->
-    <div class="mb-4">
-      <input id="barra-pesquisa" type="text" placeholder="pesquisar local"
-        class="w-full p-2 md:p-3 lg:p-2 rounded-md text-black text-base md:text-lg" />
-    </div>
+
+    <div class="mb-4 relative w-full ">
+      <input id="barra-pesquisa" type="text" placeholder="Pesquisar Local"
+        class="w-full p-2 md:p-3 lg:p-2 rounded-md text-black text-base md:text-lg pr-10 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    
+  
+  <!-- Botão ícone de busca -->
+  <button id="btn-buscar" 
+    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black">
+    🔍
+  </button>
+
+  <!-- container de resultados (dropdown style) -->
+  <div id="resultado" class="absolute w-full bg-white shadow-lg rounded-md mt-1 hidden z-50"></div>
+</div>
+
+<script src="pesquisa.js"></script>
+
 
     <!-- Mapa -->
     <div id="mapContainer" class="relative">
@@ -199,9 +213,14 @@
       </a>
     </div>
 
-    <!-- Lista de locais -->
+      <!-- recomendado -->
+<section id="lista-locais" class="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch"></section>
+
+<script src="JS/locais.js"></script>
+
+    <!-- Lista de locais 
     <section class="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-      <!-- Exemplo Praça da Matriz -->
+       Exemplo Praça da Matriz 
       <div class="bg-white text-black p-3 md:p-4 rounded-md shadow h-full flex flex-col justify-between">
         <h2 class="font-semibold text-base md:text-lg">Praça da Matriz</h2>
         <p class="text-sm md:text-base">
@@ -266,6 +285,13 @@
       </div>
 
     </section>
+    -->
+<!-- Lista de locais -->
+
+
+
+
+  
   </main>
 
 
@@ -319,6 +345,8 @@
       }
     });
   </script>
+  <script src="JS/pesquisa.js"></script>
+
 </body>
 
 </html>
