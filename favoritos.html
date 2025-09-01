@@ -90,7 +90,7 @@
         <h2 class="text-center py-6 font-semibold mb-4" style="font-size: larger;">Meus Locais Favoritos ❤️</h2>
 
         <!-- Lista de Favoritos (será preenchida via JS) -->
-        <div id="lista-favoritos" class="space-y-4">
+        <div id="listaFavoritos" class="space-y-4">
             <!-- Exemplo de item -->
             <!--
             <div class="bg-white text-black p-4 rounded shadow">
@@ -134,7 +134,7 @@
         // Simulação de favoritos salvos (isso virá do backend no futuro)
         const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
-        const lista = document.getElementById("lista-favoritos");
+        const lista = document.getElementById("listaFavoritos");
         const semFavoritos = document.getElementById("sem-favoritos");
 
         if (favoritos.length > 0) {
@@ -164,5 +164,6 @@
     
 <!-- Scripts -->
   <script src="JS/script.js"></script>
+  <script src="JS/conexaoFavorito.js"></script>
 </body>
 </html>

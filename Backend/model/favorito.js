@@ -17,6 +17,13 @@ const Favorito = {
     `;
     const result = await pool.query(query, [chave_user]);
     return result.rows;
+  },
+
+  remover: async (chave_user, id_local) => {
+    const query = "DELETE FROM favoritos WHERE chave_user = $1 AND id_local = $2";
+    const values = [chave_user, id_local];
+    await pool.query(query, values);
+    return { chave_user, id_local };
   }
 };
 

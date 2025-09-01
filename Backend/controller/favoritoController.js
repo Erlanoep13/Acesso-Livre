@@ -23,5 +23,15 @@ const favoritoController = {
   }
 };
 
+remover: async (req, res) => {
+  try {
+    const { chave_user, id_local } = req.body;
+    await Favorito.remover(chave_user, id_local);
+    res.json({ mensagem: "Local removido dos favoritos!" });
+  } catch (err) {
+    res.status(500).json({ erro: "Erro ao remover favorito", detalhe: err.message });
+  }
+}
+
 export default favoritoController;
 
