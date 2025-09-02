@@ -12,6 +12,7 @@ function criaCard(local) {
   // usar JSON.stringify para evitar quebrar HTML se houver aspas no texto
   const payloadEditar = `
     editarLocal({
+      id_local: ${JSON.stringify(`${local.id_local}`)},
       coordenadas: ${JSON.stringify(`${local.latitude}, ${local.longitude}`)},
       nome: ${JSON.stringify(local.nome_local)},
       localizacao: ${JSON.stringify(local.localizacao)},
