@@ -66,6 +66,28 @@ const localController = {
       console.error("Erro ao listar locais:", err);
       res.status(500).json({ message: "Erro no servidor" });
     }
+  },
+
+  async atualizarLocal(req, res) {
+    try {
+      const { id_local } = req.params;
+      const dados = req.body;
+
+      if (!id_local) {
+        return res.status(400).json({ message: "ID do local é obrigatório" });
+      }
+
+      const localAtualizado = await Local.atualizarLocal(id_local, dados);
+
+      if (!localAtualizado) {
+        return res.status(404).json({ message: "Local não encontrado" });
+      }
+
+      res.json({ message: "Local atualizado com sucesso", local: localAtualizado });
+    } catch (err) {
+      console.error("Erro ao atualizar local:", err);
+      res.status(500).json({ message: "Erro no servidor" });
+    }
   }
 
 };

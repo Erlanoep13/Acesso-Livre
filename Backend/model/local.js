@@ -38,7 +38,31 @@ const Local = {
       console.error("Erro ao buscar todos os locais:", err);
       throw err;
     }
+  },
+
+  async atualizarLocal(id_local, { nome_local, tipo_acessibilidade, categoria, imagem, descricao, localizacao, latitude, longitude }) {
+    try {
+      const result = await pool.query(
+        `UPDATE locais
+       SET nome_local = $1,
+           tipo_acessibilidade = $2,
+           categoria = $3,
+           imagem = $4,
+           descricao = $5,
+           localizacao = $6,
+           latitude = $7,
+           longitude = $8
+       WHERE id_local = $9
+       RETURNING *`,
+        [nome_local, tipo_acessibilidade, categoria, imagem, descricao, localizacao, latitude, longitude, id_local]
+      );
+      return result.rows[0];
+    } catch (err) {
+      console.error("Erro ao atualizar local:", err);
+      throw err;
+    }
   }
+
 
 };
 
