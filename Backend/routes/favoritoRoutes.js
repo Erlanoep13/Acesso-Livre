@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.post("/favoritar", favoritoController.adicionar);              // POST /favoritos
 router.get("/:chave_user", favoritoController.listarPorUsuario); // GET /favoritos/:chave_user
+router.delete("/remover", favoritoController.remover);
+
 
 export default router;
 

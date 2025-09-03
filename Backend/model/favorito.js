@@ -17,7 +17,16 @@ const Favorito = {
     `;
     const result = await pool.query(query, [chave_user]);
     return result.rows;
-  }
+  },
+
+  // remover favorito
+  remover: async (chave_user, id_local) => {
+    const query = "DELETE FROM favoritos WHERE chave_user = $1 AND id_local = $2 RETURNING *";
+    const values = [chave_user, id_local];
+    const result = await pool.query(query, values);
+    return result.rows[0]; // retorna o registro apagado (ou undefined se não existir)
+}
+
 };
 
 export default Favorito;
