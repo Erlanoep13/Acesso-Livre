@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3000"; // ajuste se sua porta/host for diferente
+const API_BASE = "http://localhost:3000"; // ajuste se necessário
 
 function getContainerLista() {
   return document.getElementById("lista-locais") || document.querySelector("section.grid");
@@ -8,7 +8,7 @@ function criaCard(local, favoritosIds = []) {
   const card = document.createElement("div");
   card.className = "bg-white text-black p-3 md:p-4 rounded-md shadow h-full flex flex-col justify-between";
 
-  // coração dinâmico já marcado se estiver nos favoritos
+  // botão favoritar
   const coracao = document.createElement("input");
   coracao.type = "image";
   coracao.src = favoritosIds.includes(local.id_local) ? "IMGs/coracao_cheio.png" : "IMGs/coracao.png";
@@ -55,6 +55,31 @@ function criaCard(local, favoritosIds = []) {
     }
   });
 
+  // botão editar (usando JSON.stringify do Código 1)
+  const editar = document.createElement("input");
+  editar.type = "image";
+  editar.src = "IMGs/lapis.png";
+  editar.alt = "Editar";
+  editar.width = 15;
+  editar.height = 15;
+  editar.className = "cursor-pointer";
+
+  const payloadEditar = `
+    editarLocal({
+      id_local: ${JSON.stringify(`${local.id_local}`)},
+      coordenadas: ${JSON.stringify(`${local.latitude}, ${local.longitude}`)},
+      nome: ${JSON.stringify(local.nome_local)},
+      localizacao: ${JSON.stringify(local.localizacao)},
+      tipoAcessibilidade: ${JSON.stringify(local.tipo_acessibilidade)},
+      categoria: ${JSON.stringify(local.categoria)},
+      descricao: ${JSON.stringify(local.descricao || "")},
+      foto: ${JSON.stringify(local.imagem || "IMGs/default.jpg")}
+    })
+  `.trim();
+
+  editar.setAttribute("onclick", payloadEditar);
+
+  // conteúdo do card
   card.innerHTML = `
     <h2 class="font-semibold text-base md:text-lg">${local.nome_local}</h2>
     <p class="text-sm md:text-base">
@@ -64,28 +89,9 @@ function criaCard(local, favoritosIds = []) {
     </p>
   `;
 
+  // ações
   const acoes = document.createElement("div");
   acoes.className = "flex gap-2 mt-2";
-
-  const editar = document.createElement("input");
-  editar.type = "image";
-  editar.src = "IMGs/lapis.png";
-  editar.alt = "Editar";
-  editar.width = 15;
-  editar.height = 15;
-  editar.className = "cursor-pointer";
-  editar.setAttribute("onclick", `
-    editarLocal({
-      coordenadas: '${local.latitude}, ${local.longitude}',
-      nome: '${local.nome_local}',
-      localizacao: '${local.localizacao}',
-      tipoAcessibilidade: '${local.tipo_acessibilidade}',
-      categoria: '${local.categoria}',
-      descricao: '${local.descricao || ""}',
-      foto: '${local.imagem || "IMGs/default.jpg"}'
-    })
-  `);
-
   acoes.appendChild(editar);
   acoes.appendChild(coracao);
   card.appendChild(acoes);

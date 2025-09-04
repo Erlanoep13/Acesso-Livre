@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     : ""
                 }
                 <input style="margin-top: 20px;" type="image" src="IMGs/lapis.png" alt="Editar" width="15" height="15" onclick="editarLocal({
+                    id_local: '${local.id_local}',
                     coordenadas: '${local.latitude}, ${local.longitude}',
                     nome: '${local.nome_local}',
                     localizacao: '${local.localizacao}',
@@ -79,7 +80,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     categoria: '${local.categoria}',
                     recursos: '${local.recursos || ""}',
                     descricao: '${local.descricao || ""}',
-                    foto: '${local.imagem || ""}'
+                    foto: '${local.imagem || ""}',
+                    chave_usr: '${local.chave_user}'
                 })">
                 <input type="image" src="IMGs/coracao.png" alt="Favoritar" width="16" height="16">
             </div>
@@ -127,7 +129,6 @@ function redirecionarParaFormulario(lat, lng) {
 }
 
 function editarLocal(dados) {
-    // Montar URL com todos os dados
     const params = new URLSearchParams(dados).toString();
-    window.location.href = `adicionarLocal.html?${params}`;
+    window.location.href = `adicionarLocal.html?${params}&id_local=${dados.id_local}`;
 }
