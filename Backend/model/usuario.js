@@ -1,5 +1,4 @@
-// usuario.js
-import pool from "../config/db.js";
+import db from "../config/db.js";
 
 class Usuario {
   // Método de criação
@@ -10,8 +9,10 @@ class Usuario {
       RETURNING chave_user, nome;
     `;
     const values = [nome];
-    const result = await pool.query(query, values);
-    return result.rows[0];
+    const result = await db.query(query, values);
+
+    // result já é um array
+    return result[0];
   }
 
   // Método de login
@@ -22,8 +23,10 @@ class Usuario {
       WHERE nome = $1 AND chave_user = $2
     `;
     const values = [nome, chave_user];
-    const result = await pool.query(query, values);
-    return result.rows[0] || null; // retorna null se não encontrar
+    const result = await db.query(query, values);
+
+    // result já é um array
+    return result[0] || null;
   }
 }
 
