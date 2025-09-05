@@ -65,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 let resposta;
                 if (id_local) {
                     // EDITAR LOCAL → PUT
-                    resposta = await fetch(`http://localhost:3000/locais/atualizar/${id_local}`, {
+                    resposta = await fetch(`https://acesso-livre.onrender.com/locais/atualizar/${id_local}`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(novoLocal),
                     });
                 } else {
                     // CRIAR LOCAL → POST
-                    resposta = await fetch("http://localhost:3000/locais/criar", {
+                    resposta = await fetch("https://acesso-livre.onrender.com/locais/criar", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(novoLocal),

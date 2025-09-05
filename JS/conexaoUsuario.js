@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const nome = inputNome.value;
 
             try {
-                const resposta = await fetch("http://localhost:3000/usuarios/criar", {
+                const resposta = await fetch("https://acesso-livre.onrender.com/usuarios/criar", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- LOGIN ---
     const formLogin = document.querySelector("form#form-login");
     const inputLoginNome = document.getElementById("nome");
-    const inputLoginChave = document.getElementById("chave_user"); // <-- corrigido
+    const inputLoginChave = document.getElementById("chave_user");
 
     if (formLogin) {
         formLogin.addEventListener("submit", async (e) => {
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const chave_user = inputLoginChave.value;
 
             try {
-                const resposta = await fetch("http://localhost:3000/usuarios/login", {
+                const resposta = await fetch("https://acesso-livre.onrender.com/usuarios/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

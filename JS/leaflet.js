@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Buscar locais reais do backend
     try {
-        const resposta = await fetch("http://localhost:3000/locais");
+        const resposta = await fetch("https://acesso-livre.onrender.com/locais");
         const locais = await resposta.json();
 
         locais.forEach(local => {

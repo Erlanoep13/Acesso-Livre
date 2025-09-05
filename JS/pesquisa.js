@@ -12,7 +12,7 @@ async function buscarLocais() {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/locais/buscar?nome=${encodeURIComponent(nome)}`);
+    const response = await fetch(`https://acesso-livre.onrender.com/locais/buscar?nome=${encodeURIComponent(nome)}`);
     const data = await response.json();
 
     divResultado.innerHTML = "";

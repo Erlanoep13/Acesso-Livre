@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3000"; // ajuste se necessário
+const API_BASE = "https://acesso-livre.onrender.com"; // ajuste se necessário
 
 function getContainerLista() {
   return document.getElementById("lista-locais") || document.querySelector("section.grid");

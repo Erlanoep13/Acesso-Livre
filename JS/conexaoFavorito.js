@@ -30,7 +30,7 @@ async function favoritarLocal(id_local) {
   }
 
   try {
-    const response = await fetch("http://localhost:3000/favoritos/favoritar", {
+    const response = await fetch("https://acesso-livre.onrender.com/favoritos/favoritar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -57,7 +57,7 @@ async function carregarFavoritos() {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/favoritos/${usuarioLogado.chave_user}`);
+    const response = await fetch(`https://acesso-livre.onrender.com/favoritos/${usuarioLogado.chave_user}`);
     const favoritos = await response.json();
 
     const lista = document.querySelector("#listaFavoritos");
@@ -106,7 +106,7 @@ async function removerFavorito(id_local, cardElemento) {
   }
 
   try {
-    const resp = await fetch("http://localhost:3000/favoritos/remover", {
+    const resp = await fetch("https://acesso-livre.onrender.com/favoritos/remover", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chave_user: usuarioLogado.chave_user, id_local })
