@@ -1,17 +1,17 @@
 import postgres from "postgres";
 
-// Lê a string de conexão do .env
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
-  throw new Error("❌ DATABASE_URL não definida no .env");
+  throw new Error("❌ DATABASE_URL não definida no .env ou nas variáveis do Render");
 }
 
 // Cria cliente do Supabase
 const sql = postgres(connectionString, {
-  ssl: "require",              // Supabase exige SSL
-  idle_timeout: 20,            // segundos de inatividade antes de fechar
-  connect_timeout: 10,         // tempo limite para conectar
+  ssl: { rejectUnauthorized: false }, // Supabase exige SSL
+  idle_timeout: 20,                   // segundos de inatividade antes de fechar
+  connect_timeout: 10,                // tempo limite para conectar
+  max_lifetime: 1800                  // máximo de 30min por conexão
 });
 
 // Wrapper para manter compatibilidade com `.query()`
@@ -24,10 +24,8 @@ const db = {
    */
   async query(text, params = []) {
     try {
-      // Usamos .unsafe porque você está usando placeholders ($1, $2...)
+      // Usamos .unsafe porque você está controlando placeholders
       const result = await sql.unsafe(text, params);
-
-      // `result` sempre retorna um array de objetos
       return result;
     } catch (err) {
       console.error("❌ Erro na query SQL:", err.message);
