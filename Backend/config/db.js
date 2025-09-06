@@ -1,25 +1,37 @@
-//db.js
-import pkg from "pg";
-import dotenv from "dotenv";
+import postgres from "postgres";
 
-dotenv.config();
+const connectionString = process.env.DATABASE_URL;
 
-const { Pool } = pkg;
+if (!connectionString) {
+  throw new Error("❌ DATABASE_URL não definida no .env ou nas variáveis do Render");
+}
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
+// Cria cliente do Supabase
+const sql = postgres(connectionString, {
+  ssl: { rejectUnauthorized: false }, // Supabase exige SSL
+  idle_timeout: 20,                   // segundos de inatividade antes de fechar
+  connect_timeout: 10,                // tempo limite para conectar
+  max_lifetime: 1800                  // máximo de 30min por conexão
+});
+
+// Wrapper para manter compatibilidade com `.query()`
+const db = {
+  /**
+   * Executa uma query SQL
+   * @param {string} text - Query SQL com placeholders ($1, $2, etc.)
+   * @param {Array} params - Valores para os placeholders
+   * @returns {Promise<Array>} - Linhas retornadas pela query
+   */
+  async query(text, params = []) {
+    try {
+      // Usamos .unsafe porque você está controlando placeholders
+      const result = await sql.unsafe(text, params);
+      return result;
+    } catch (err) {
+      console.error("❌ Erro na query SQL:", err.message);
+      throw err;
+    }
   },
-});
+};
 
-pool.on("connect", () => {
-  console.log("✅ Conectado ao banco de dados!");
-});
-
-pool.on("error", (err) => {
-  console.error("❌ Erro no banco de dados:", err);
-  process.exit(-1);
-});
-
-export default pool;
+export default db;

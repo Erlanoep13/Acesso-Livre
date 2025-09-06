@@ -1,4 +1,4 @@
-import pool from "../config/db.js";
+import db from "../config/db.js";
 
 const Favorito = {
   adicionar: async (chave_user, id_local) => {
@@ -8,7 +8,7 @@ const Favorito = {
       RETURNING *
     `;
     const values = [chave_user, id_local];
-    const result = await pool.query(query, values);
+    const result = await db.query(query, values);
     return result[0]; // retorna o registro inserido
   },
 
@@ -19,7 +19,7 @@ const Favorito = {
       JOIN locais l ON f.id_local = l.id_local
       WHERE f.chave_user = $1
     `;
-    const result = await pool.query(query, [chave_user]);
+    const result = await db.query(query, [chave_user]);
     return result; // já é array
   },
 
@@ -30,7 +30,7 @@ const Favorito = {
       RETURNING *
     `;
     const values = [chave_user, id_local];
-    const result = await pool.query(query, values);
+    const result = await db.query(query, values);
     return result[0]; // retorna o registro removido ou undefined
   }
 };

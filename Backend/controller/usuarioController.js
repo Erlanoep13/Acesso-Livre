@@ -1,10 +1,8 @@
 import Usuario from "../model/usuario.js";
 
-// Criação de usuário
+//criação de usuário
 export async function criarUsuario(req, res) {
   try {
-    console.log("📩 Body recebido:", req.body); // debug
-
     const { nome } = req.body;
 
     if (!nome) {
@@ -12,11 +10,6 @@ export async function criarUsuario(req, res) {
     }
 
     const novoUsuario = await Usuario.criar(nome);
-
-    // Se o model retornar undefined ou null
-    if (!novoUsuario) {
-      return res.status(500).json({ error: "Não foi possível criar o usuário" });
-    }
 
     return res.status(201).json({
       message: "Usuário criado com sucesso!",
@@ -30,17 +23,16 @@ export async function criarUsuario(req, res) {
   }
 }
 
-// Login do usuário
+//login do usuário
 export async function loginUsuario(req, res) {
   try {
-    console.log("📩 Body recebido (login):", req.body); // debug
-
     const { nome, chave_user } = req.body;
 
     if (!nome || !chave_user) {
       return res.status(400).json({ error: "Nome e chave de acesso são obrigatórios" });
     }
 
+    // Consulta no banco
     const usuario = await Usuario.login(nome, chave_user);
 
     if (!usuario) {
