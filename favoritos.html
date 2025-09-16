@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -63,7 +64,7 @@
               d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
           </svg>
           <a href="favoritos.html" class="...">Favoritos</a>
-          
+
         </li>
         <li class="flex items-center gap-2 cursor-pointer hover:text-green-700">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -85,14 +86,14 @@
 
   </header>
 
-    <!-- Conteúdo -->
-    <main class="flex-1 p-4">
-        <h2 class="text-center py-6 font-semibold mb-4" style="font-size: larger;">Meus Locais Favoritos ❤️</h2>
+  <!-- Conteúdo -->
+  <main class="flex-1 p-4">
+    <h2 class="text-center py-6 font-semibold mb-4" style="font-size: larger;">Meus Locais Favoritos ❤️</h2>
 
-        <!-- Lista de Favoritos (será preenchida via JS) -->
-        <div id="listaFavoritos" class="space-y-4">
-            <!-- Exemplo de item -->
-            <!--
+    <!-- Lista de Favoritos (será preenchida via JS) -->
+    <div id="listaFavoritos" class="space-y-4">
+      <!-- Exemplo de item -->
+      <!--
             <div class="bg-white text-black p-4 rounded shadow">
                 <h3 class="font-bold">Nome do Local</h3>
                 <p class="text-sm">Descrição do local...</p>
@@ -102,13 +103,11 @@
                 </div>
             </div>
             -->
-        </div>
+    </div>
 
-        <!-- Caso não tenha favoritos -->
-        <p id="sem-favoritos" class="text-center text-gray-300 hidden mt-4" style="font-size: large;">Você ainda não tem locais salvos nos favoritos.</p>
-    </main>
+  </main>
 
-    <!-- Footer -->
+  <!-- Footer -->
   <footer class="bg-green-800 text-white mt-8">
     <div class="max-w-screen-xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
 
@@ -129,19 +128,19 @@
     </div>
   </footer>
 
-    <!-- Script -->
-    <script>
-        // Simulação de favoritos salvos (isso virá do backend no futuro)
-        const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+  <!-- Script -->
+  <script>
+    // Simulação de favoritos salvos (isso virá do backend no futuro)
+    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
-        const lista = document.getElementById("listaFavoritos");
-        const semFavoritos = document.getElementById("sem-favoritos");
+    const lista = document.getElementById("listaFavoritos");
+    const semFavoritos = document.getElementById("sem-favoritos");
 
-        if (favoritos.length > 0) {
-            favoritos.forEach(local => {
-                const item = document.createElement("div");
-                item.className = "bg-white text-black p-4 rounded shadow";
-                item.innerHTML = `
+    if (favoritos.length > 0) {
+      favoritos.forEach(local => {
+        const item = document.createElement("div");
+        item.className = "bg-white text-black p-4 rounded shadow";
+        item.innerHTML = `
                     <h3 class="font-bold">${local.nome}</h3>
                     <p class="text-sm">${local.descricao}</p>
                     <div class="flex space-x-2 mt-2">
@@ -149,21 +148,22 @@
                         <a href="${local.link}" target="_blank" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">Ver no mapa</a>
                     </div>
                 `;
-                lista.appendChild(item);
-            });
-        } else {
-            semFavoritos.classList.remove("hidden");
-        }
+        lista.appendChild(item);
+      });
+    } else {
+      semFavoritos.classList.remove("hidden");
+    }
 
-        function removerFavorito(id) {
-            const novosFavoritos = favoritos.filter(local => local.id !== id);
-            localStorage.setItem("favoritos", JSON.stringify(novosFavoritos));
-            location.reload();
-        }
-    </script>
-    
-<!-- Scripts -->
+    function removerFavorito(id) {
+      const novosFavoritos = favoritos.filter(local => local.id !== id);
+      localStorage.setItem("favoritos", JSON.stringify(novosFavoritos));
+      location.reload();
+    }
+  </script>
+
+  <!-- Scripts -->
   <script src="JS/script.js"></script>
   <script src="JS/conexaoFavorito.js"></script>
 </body>
+
 </html>
