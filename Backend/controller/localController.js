@@ -88,6 +88,33 @@ const localController = {
       console.error("Erro ao atualizar local:", err);
       res.status(500).json({ message: "Erro no servidor" });
     }
+  },
+
+  async deletarLocal(req, res) {
+    try {
+      // 1. Extrai o ID do local dos parâmetros da URL (ex: /locais/5)
+      const { id_local } = req.params;
+
+      // 2. Valida se o ID foi fornecido
+      if (!id_local) {
+        return res.status(400).json({ message: "ID do local é obrigatório" });
+      }
+
+      // 3. Chama a função do model para deletar o local
+      const localDeletado = await Local.deletarLocal(id_local);
+
+      // 4. Verifica se o local foi encontrado e deletado
+      if (!localDeletado) {
+        return res.status(404).json({ message: "Local não encontrado" });
+      }
+
+      // 5. Envia uma resposta de sucesso
+      res.status(200).json({ message: "Local deletado com sucesso", local: localDeletado });
+
+    } catch (err) {
+      console.error("Erro ao deletar local:", err);
+      res.status(500).json({ message: "Erro no servidor" });
+    }
   }
 
 };
