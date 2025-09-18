@@ -1,4 +1,7 @@
-const API_BASE = "https://acesso-livre.onrender.com"; // ajuste se necessário
+//JS/locais.js
+
+// const API_BASE = "http://localhost:3000"; // Para teste local
+const API_BASE = "https://acesso-livre.onrender.com"; // Para produção
 
 function getContainerLista() {
   return document.getElementById("lista-locais") || document.querySelector("section.grid");
@@ -89,11 +92,36 @@ function criaCard(local, favoritosIds = []) {
     </p>
   `;
 
+
+  // CRIE O BOTÃO DE REMOVER
+  const remover = document.createElement("input");
+  remover.type = "image";
+  remover.src = "IMGs/lixeira.png";
+  remover.alt = "Remover";
+  remover.title = "Remover";
+  remover.width = 16;
+  remover.height = 16;
+  remover.className = "cursor-pointer";
+  // Adiciona o evento de clique para chamar a função que criamos no leaflet.js
+  remover.setAttribute("onclick", `deletarLocal(${local.id_local})`);
+
+
+  // conteúdo do card
+  card.innerHTML = `
+    <h2 class="font-semibold text-base md:text-lg">${local.nome_local}</h2>
+    <p class="text-sm md:text-base">
+      ${local.localizacao || ""}<br>
+      <strong>Acessibilidade:</strong> ${local.tipo_acessibilidade || "—"}<br>
+      <strong>Descrição:</strong> ${local.descricao || "Sem descrição"}
+    </p>
+  `;
+
   // ações
   const acoes = document.createElement("div");
   acoes.className = "flex gap-2 mt-2";
   acoes.appendChild(editar);
   acoes.appendChild(coracao);
+  acoes.appendChild(remover); // ADICIONE O BOTÃO DE REMOVER ÀS AÇÕES
   card.appendChild(acoes);
 
   return card;
