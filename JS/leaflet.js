@@ -1,8 +1,8 @@
 // LEAFLET
 
 // Adicione esta variável no topo do arquivo para facilitar a troca de ambiente
-const API_URL = "http://localhost:3000"; // Para teste local
-// const API_URL = "https://acesso-livre.onrender.com"; // Para produção
+// const API_URL = "http://localhost:3000"; // Para teste local
+const API_URL = "https://acesso-livre.onrender.com"; // Para produção
 
 document.addEventListener("DOMContentLoaded", async function () {
     const mapContainer = document.getElementById("mapContainer");
